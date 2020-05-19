@@ -1,7 +1,7 @@
 Project van groep C/E24:
 Anna van Rosmalen
 Anne de Graaff
-Nick Scholmaa
+Nick Scholma
 Pieter Beens
 
 ONS DOEL:
