@@ -6,7 +6,7 @@ import { GeneralComponentsModule } from './general-components/general-components
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

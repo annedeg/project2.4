@@ -11,7 +11,7 @@ export class FooterComponent implements OnInit {
   //First item of array is button text
   //Second item of array is id
   navigation = [["Home", 0], ["Contact",1], ["Overig", 2]]
-  apple = new Date().getFullYear()
+  currentYear = new Date().getFullYear()
   ngOnInit(): void {
   }
 
