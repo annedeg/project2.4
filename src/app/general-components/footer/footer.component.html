@@ -1,0 +1,12 @@
+<div class="navigation">
+    <div class="container">
+        <span>
+            Social Distancing Network | Copyright {{apple}}
+        </span>
+        <ul>
+            <li *ngFor='let item of navigation'>
+                <a (click)="handleClick(item[1])">{{item[0]}}</a>
+            </li>
+        </ul>
+    </div>
+</div>
