@@ -1,0 +1,40 @@
+<div *ngIf="!buttonClicked">
+  <p>Heb je een officiele Corona-diagnosis? </p>
+  <button (click)="showCoronaConfirmed()">Ja</button>
+  <button (click)="showSymptomsList()">Nee</button>
+</div>
+
+<div *ngIf="coronaConfirmedPage">
+  <p>Je staat nu aangegeven als besmet met Corona. De personen met wie je in contact bent geweest zullen via Sodine
+  een notifcatie krijgen dat zij ook mogelijk besmet zijn.</p>
+</div>
+
+<div *ngIf="symptomsPage">
+  <p>Geef hier alsjeblieft aan welke symptomen je hebt.</p>
+  <form>
+    <input type = "checkbox">
+    <label> Koorts</label><br>
+    <input type = "checkbox">
+    <label> Droge hoest</label><br>
+    <input type = "checkbox">
+    <label> Vermoeidheid</label><br>
+    <input type = "checkbox">
+    <label> Pijn in het lichaam</label><br>
+    <input type = "checkbox">
+    <label> Keelpijn</label><br>
+    <input type = "checkbox">
+    <label> Hoofdpijn</label><br>
+    <input type = "checkbox">
+    <label> Diarree</label><br>
+    <input type = "checkbox">
+    <label> Blindvliesontsteking</label><br>
+    <input type = "checkbox">
+    <label> Kortademigheid of ademhalingsproblemen</label><br>
+    <input type = "checkbox">
+    <label> Pijn of druk op de borst</label><br>
+    <input type = "checkbox">
+    <label> Aangetast spraak- of bewegingsvermogen</label><br>
+  </form>
+  <br>
+  <button (click)="showCoronaConfirmed()">Bevestigen</button>
+</div>
