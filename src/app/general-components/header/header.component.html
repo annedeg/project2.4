@@ -1,0 +1,13 @@
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <h1>SoDiNe</h1>
+        </div>
+        <div class="header-buttons">
+            <span *ngIf="loginName">{{loginName}}</span>
+            <button id="settings">Settings</button>
+            <button *ngIf="loginName" id="login">Logout</button>
+            <button *ngIf="!loginName" id="login">Login</button>
+        </div>
+    </div> 
+</div>
