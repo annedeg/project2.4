@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { GeneralComponentsModule } from './general-components/general-components.module';
 import { IHaveCoronaModule } from "./i-have-corona/i-have-corona.module";
 
 @NgModule({
@@ -10,7 +11,8 @@ import { IHaveCoronaModule } from "./i-have-corona/i-have-corona.module";
   ],
   imports: [
     BrowserModule,
-    IHaveCoronaModule
+    IHaveCoronaModule,
+    GeneralComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

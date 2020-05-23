@@ -1,0 +1,36 @@
+.navigation {
+    margin-top: 20px;
+    background-color: green;
+    .container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+        span {
+            padding-top: 16px;
+            color: white;
+        }
+
+
+        ul {
+        
+            max-width: 350px;
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            padding: 5px;
+            align-items: center;
+            width: 100%;
+
+            li {
+                color: white;
+                font-size: 16px;
+                a {
+                    
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
