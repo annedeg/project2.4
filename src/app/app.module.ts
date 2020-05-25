@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { GeneralComponentsModule } from './general-components/general-components.module';
+import { HomePageModule } from './home-page/home-page.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -10,7 +12,9 @@ import { GeneralComponentsModule } from './general-components/general-components
   ],
   imports: [
     BrowserModule,
-    GeneralComponentsModule
+    GeneralComponentsModule,
+    HomePageModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

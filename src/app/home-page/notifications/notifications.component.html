@@ -1,1 +1,9 @@
-<p>notifications works!</p>
+<div class="notification">
+    <div class="container">
+        <ul>
+            <li *ngFor='let notification of notification'>
+                <a>{{notification[0]}}</a>
+            </li>
+        </ul>
+    </div>
+</div>
