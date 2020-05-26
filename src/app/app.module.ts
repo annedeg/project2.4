@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { GeneralComponentsModule } from './general-components/general-components.module';
+import { LoginMenuModule } from './login-menu/login-menu.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { GeneralComponentsModule } from './general-components/general-components
   ],
   imports: [
     BrowserModule,
-    GeneralComponentsModule
+    GeneralComponentsModule,
+    LoginMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
