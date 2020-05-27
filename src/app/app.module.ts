@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { GeneralComponentsModule } from './general-components/general-components.module';
 import { LoginMenuModule } from './login-menu/login-menu.module';
 import { AppRoutingModule } from './app-routing.module';
+import { IHaveCoronaModule } from "./i-have-corona/i-have-corona.module";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
     GeneralComponentsModule,
     LoginMenuModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    IHaveCoronaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
