@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { GeneralComponentsModule } from './general-components/general-components.module';
@@ -12,7 +13,8 @@ import { LoginMenuModule } from './login-menu/login-menu.module';
   imports: [
     BrowserModule,
     GeneralComponentsModule,
-    LoginMenuModule
+    LoginMenuModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

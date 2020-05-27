@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-login-menu',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginMenuComponent implements OnInit {
 
+  mail: string = "";
+  password: string = "";
+  result: string = "";
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  validateResponses() {
+    this.result = this.mail;
   }
 
 }
