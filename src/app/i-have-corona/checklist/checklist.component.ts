@@ -33,9 +33,20 @@ export class ChecklistComponent implements OnInit {
   }
 
   showPassword() {
-    this.startPage = false;
-    this.symptomsPage = false;
-    this.passwordPage = true;
+    let form: HTMLFormElement = <HTMLFormElement> document.getElementById("symptomsForm");
+    console.log(form)
+    for(let i = 0; i < form.length; i++) {
+      let htmlInputElement: HTMLInputElement = <HTMLInputElement>form.elements[i]
+      if(htmlInputElement.checked == true) {
+        console.log(this.symptoms[i] + " ik ben waar")
+      } else {
+        console.log(this.symptoms[i] + " ik ben niet waar")
+      }
+    }
+
+    // this.startPage = false;
+    // this.symptomsPage = false;
+    // this.passwordPage = true;
   }
   showCoronaConfirmed() {
     this.passwordPage = false;
@@ -45,9 +56,5 @@ export class ChecklistComponent implements OnInit {
   showSymptomsList() {
     this.startPage = false;
     this.symptomsPage = true;
-  }
-
-  test() {
-    console.log("clicked");
   }
 }
