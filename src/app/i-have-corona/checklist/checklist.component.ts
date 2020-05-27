@@ -28,6 +28,10 @@ export class ChecklistComponent implements OnInit {
 
   }
 
+  checkSymptoms() {
+    let form : String = document.getElementById()
+  }
+
   showPassword() {
     this.startPage = false;
     this.symptomsPage = false;

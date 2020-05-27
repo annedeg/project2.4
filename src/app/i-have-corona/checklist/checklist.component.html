@@ -11,13 +11,14 @@
 
 <div *ngIf="symptomsPage">
   <p>Geef hier alsjeblieft aan welke symptomen je hebt.</p>
-  <form *ngFor="let symptom of symptoms">
-    <input type = checkbox (click)="test()">
-    <label>{{symptom[0]}}</label>
-    <br>
-  </form>
-  <br>
-  <button (click)="showPassword()">Bevestigen</button>
+  <div *ngFor="let symptom of symptoms">
+    <form id="symptomForm">
+      <input type = checkbox (click)="test()">
+      <label>{{symptom[0]}}</label>
+      <br>
+    </form>
+  </div>
+  <button (click)="checkSymptoms()">Bevestigen</button>
 </div>
 
 <div *ngIf="passwordPage">
