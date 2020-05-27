@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-menu',
@@ -10,7 +11,8 @@ export class LoginMenuComponent implements OnInit {
 
   mail: string = "";
   password: string = "";
-  result: string = "";
+  message: string = "";
+  router: Router;
 
   constructor() { }
 
@@ -22,8 +24,8 @@ export class LoginMenuComponent implements OnInit {
     mockDetails.forEach(element => {
       if (element[0] == this.mail && element[1]  == this.password) validated = true;
     });
-    if (validated) this.result = "Haxx0red";
-    else this.result = "Incorrect details";
+    if (validated) this.router.navigate(['header']);
+    else this.message = "Gegevens onjuist";
   }
 
   validateResponsesDATABASE() {
@@ -33,7 +35,6 @@ export class LoginMenuComponent implements OnInit {
     xmlHttp.send( null );
     return xmlHttp.responseText;
   }
-
 }
 
 const mockDetails = [

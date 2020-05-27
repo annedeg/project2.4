@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { GeneralComponentsModule } from './general-components/general-components.module';
 import { LoginMenuModule } from './login-menu/login-menu.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { LoginMenuModule } from './login-menu/login-menu.module';
     BrowserModule,
     GeneralComponentsModule,
     LoginMenuModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
