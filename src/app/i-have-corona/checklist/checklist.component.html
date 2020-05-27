@@ -1,0 +1,21 @@
+<div *ngIf="startPage">
+  <p>Heb je een officiele Corona-diagnosis? </p>
+  <button (click)="showCoronaConfirmed()">Ja</button>
+  <button (click)="showSymptomsList()">Nee</button>
+</div>
+
+<div *ngIf="coronaConfirmedPage">
+  <p>Je staat nu aangegeven als besmet met Corona. De personen met wie je in contact bent geweest zullen via Sodine
+  een notifcatie krijgen dat zij ook mogelijk besmet zijn.</p>
+</div>
+
+<div *ngIf="symptomsPage">
+  <p>Geef hier alsjeblieft aan welke symptomen je hebt.</p>
+  <form *ngFor="let symptom of symptoms">
+    <input type = checkbox>
+    <label>{{symptom[0]}}</label>
+    <br>
+  </form>
+  <br>
+  <button (click)="showCoronaConfirmed()">Bevestigen</button>
+</div>

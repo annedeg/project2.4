@@ -6,6 +6,7 @@ import { GeneralComponentsModule } from './general-components/general-components
 import { HomePageModule } from './home-page/home-page.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { IHaveCoronaModule } from "./i-have-corona/i-have-corona.module";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { AppRoutingModule } from './app-routing.module';
     GeneralComponentsModule,
     HomePageModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    IHaveCoronaModule,
+    GeneralComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
