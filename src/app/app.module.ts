@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { GeneralComponentsModule } from './general-components/general-components.module';
+import { IHaveCoronaModule } from "./i-have-corona/i-have-corona.module";
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import { GeneralComponentsModule } from './general-components/general-components
   ],
   imports: [
     BrowserModule,
+    IHaveCoronaModule,
     GeneralComponentsModule
   ],
   providers: [],
