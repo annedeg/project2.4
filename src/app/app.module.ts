@@ -12,7 +12,7 @@ import { IHaveCoronaModule } from "./i-have-corona/i-have-corona.module";
   imports: [
     BrowserModule,
     IHaveCoronaModule,
-    GeneralComponentsModule
+    GeneralComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,9 +13,10 @@ export class ChecklistComponent implements OnInit {
     ['Diarree', 1],['Blindvliesontsteking', 1], ['Kortademigheid of ademhalingsproblemen', 1],
     ['Pijn of druk op de borst', 1], ['Aangetast spraak- of bewegingsvermogen', 1]];
 
-  startPage: Boolean = true;
+  startPage : Boolean = true;
   coronaConfirmedPage : Boolean = false;
   symptomsPage : Boolean = false;
+  passwordPage : Boolean = false;
 
 
   constructor() { }
@@ -23,14 +24,26 @@ export class ChecklistComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  showCoronaConfirmed() {
+  confirmPassword() {
+
+  }
+
+  showPassword() {
     this.startPage = false;
     this.symptomsPage = false;
+    this.passwordPage = true;
+  }
+  showCoronaConfirmed() {
+    this.passwordPage = false;
     this.coronaConfirmedPage = true;
   }
 
   showSymptomsList() {
     this.startPage = false;
     this.symptomsPage = true;
+  }
+
+  test() {
+    console.log("clicked");
   }
 }
