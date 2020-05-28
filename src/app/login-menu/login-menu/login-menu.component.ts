@@ -14,18 +14,23 @@ export class LoginMenuComponent implements OnInit {
   mail: string = "";
   password: string = "";
   message: string = "";
-  router: Router;
 
-  constructor(private validationService:ValidationService) { }
+  constructor(private validationService:ValidationService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   validateResponses() {
-    console.log((this.validationService.validate(this.mail, this.password)));
-    //if (this.validationService.validate(this.mail, this.password)) this.router.navigate(['header']);
-    //else this.message = "Gegevens zijn niet correct";
-  }
+    this.validationService.validate(this.mail, this.password).subscribe(
+      () => {
+          this.router.navigate(['header'])
+      },
+      () => {
+          console.error('FOUT: ongeldige gegevens')
+          this.message="Gegevens niet correct"
+      }
+  );
+    }
 
   validateResponsesDATABASE() {
     let theUrl = "https://www.sodine.nl/" + this.mail + this.password;
