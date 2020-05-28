@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
+import { ValidationService } from 'src/app/validation.service';
+
 
 @Component({
   selector: 'app-login-menu',
@@ -14,18 +16,15 @@ export class LoginMenuComponent implements OnInit {
   message: string = "";
   router: Router;
 
-  constructor() { }
+  constructor(private validationService:ValidationService) { }
 
   ngOnInit(): void {
   }
 
   validateResponses() {
-    let validated = false;
-    mockDetails.forEach(element => {
-      if (element[0] == this.mail && element[1]  == this.password) validated = true;
-    });
-    if (validated) this.router.navigate(['header']);
-    else this.message = "Gegevens onjuist";
+    console.log((this.validationService.validate(this.mail, this.password)));
+    //if (this.validationService.validate(this.mail, this.password)) this.router.navigate(['header']);
+    //else this.message = "Gegevens zijn niet correct";
   }
 
   validateResponsesDATABASE() {
