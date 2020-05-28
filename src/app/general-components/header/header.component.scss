@@ -36,14 +36,19 @@
             margin: 0 10px;
             color: white;
             font-family: Arial, Helvetica, sans-serif;
-            padding: 5px;
-            font-size: 16px;
         }
 
-        .header-buttons > button {
-            background-color: green;
+        .mat-flat-button{
+            background-color:#6FB98F;
             color: white;
-            border: 0px;
+            font-size: 14px;
+            margin-left: 5px;
+            margin-right: 5px;
+            display: inline-block;
         }
+        .mat-flat-button:hover{
+            background-color: #609676;
+        }
+       
     }
 }

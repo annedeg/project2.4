@@ -5,9 +5,9 @@
         </div>
         <div class="header-buttons">
             <span *ngIf="loginName">{{loginName}}</span>
-            <button id="settings">Settings</button>
-            <button *ngIf="loginName" id="login">Logout</button>
-            <button *ngIf="!loginName" id="login">Login</button>
+            <button mat-flat-button id="settings">Settings</button>
+            <button mat-flat-button *ngIf="loginName" id="login">Logout</button>
+            <button mat-flat-button *ngIf="!loginName" id="login">Login</button>
         </div>
     </div> 
 </div>

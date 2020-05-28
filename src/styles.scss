@@ -5,3 +5,15 @@ body {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-flat-button{
+    background-color:#6FB98F;
+    color: white;
+    font-size: 14px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: inline-block;
+}
+.mat-flat-button:hover{
+    background-color: #609676;
+}
