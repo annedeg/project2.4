@@ -17,6 +17,9 @@ export class ChecklistComponent implements OnInit {
   coronaConfirmedPage : Boolean = false;
   symptomsPage : Boolean = false;
   passwordPage : Boolean = false;
+  noSymptomsPage : Boolean = false;
+  lowSymptomConfirmationPage : Boolean = false;
+  wrongPassword : Boolean = false;
 
 
   constructor() { }
@@ -24,33 +27,60 @@ export class ChecklistComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  confirmPassword() {
-
-  }
-
   checkSymptoms() {
-    let form : String = document.getElementById()
-  }
-
-  showPassword() {
     let form: HTMLFormElement = <HTMLFormElement> document.getElementById("symptomsForm");
-    console.log(form)
+    let symptomTotal : number = 0;
     for(let i = 0; i < form.length; i++) {
       let htmlInputElement: HTMLInputElement = <HTMLInputElement>form.elements[i]
       if(htmlInputElement.checked == true) {
-        console.log(this.symptoms[i] + " ik ben waar")
-      } else {
-        console.log(this.symptoms[i] + " ik ben niet waar")
+        symptomTotal += <number> this.symptoms[i][1];
       }
     }
-
-    // this.startPage = false;
-    // this.symptomsPage = false;
-    // this.passwordPage = true;
+    if (symptomTotal == 0) {
+      this.symptomsPage = false;
+      this.noSymptomsPage = true;
+    }
+    else if (symptomTotal < 3) { //the 3 is arbitrary
+      this.symptomsPage = false;
+      this.lowSymptomConfirmationPage = true;
+    }
+    else {
+      this.symptomsPage = false;
+      this.passwordPage = true;
+    }
   }
-  showCoronaConfirmed() {
-    this.passwordPage = false;
-    this.coronaConfirmedPage = true;
+
+  confirmPassword(pass : String) {
+    if (pass.length == 0) {
+      //Do nothing
+    }
+    else {
+      if (pass === 'defaultPassword') { //todo link up to the DB so we can check with an actual password rather that this default
+        this.passwordPage = false;
+        this.wrongPassword = false;
+        this.coronaConfirmedPage = true;
+      }
+      else {
+        this.wrongPassword = true;
+      }
+    }
+  }
+
+  showStartPage() {
+    this.startPage  = true;
+    this.coronaConfirmedPage  = false;
+    this.symptomsPage  = false;
+    this.passwordPage  = false;
+    this.noSymptomsPage  = false;
+    this.lowSymptomConfirmationPage  = false;
+    this.wrongPassword  = false;
+  }
+
+  showPassword() {
+    this.startPage = false;
+    this.symptomsPage = false;
+    this.lowSymptomConfirmationPage = false;
+    this.passwordPage = true;
   }
 
   showSymptomsList() {
