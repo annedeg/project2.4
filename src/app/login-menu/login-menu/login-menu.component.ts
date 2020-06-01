@@ -14,16 +14,13 @@ export class LoginMenuComponent implements OnInit {
   mail: string = "";
   password: string = "";
   message: string = "";
-  router: Router;
 
-  constructor(private validationService:ValidationService) { }
+  constructor(private validationService:ValidationService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   validateResponses() {
-    console.log((this.validationService.validate(this.mail, this.password)));
-
     this.validationService.validate(this.mail, this.password).subscribe(
       () => {
           this.router.navigate(['header'])
@@ -31,10 +28,7 @@ export class LoginMenuComponent implements OnInit {
       () => {
           this.message="Gegevens niet correct"
       }
-  );
-
-    //if (this.validationService.validate(this.mail, this.password)) this.router.navigate(['header']);
-    //else this.message = "Gegevens zijn niet correct";
+    );
   }
 
   validateResponsesDATABASE() {
