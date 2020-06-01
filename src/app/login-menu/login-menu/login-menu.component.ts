@@ -23,6 +23,16 @@ export class LoginMenuComponent implements OnInit {
 
   validateResponses() {
     console.log((this.validationService.validate(this.mail, this.password)));
+
+    this.validationService.validate(this.mail, this.password).subscribe(
+      () => {
+          this.router.navigate(['header'])
+      },
+      () => {
+          this.message="Gegevens niet correct"
+      }
+  );
+
     //if (this.validationService.validate(this.mail, this.password)) this.router.navigate(['header']);
     //else this.message = "Gegevens zijn niet correct";
   }
@@ -36,7 +46,3 @@ export class LoginMenuComponent implements OnInit {
   }
 }
 
-const mockDetails = [
-  ["Anna", "hummer"],
-  ["admin", "123"]
-];

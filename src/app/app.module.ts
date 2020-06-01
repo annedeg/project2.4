@@ -7,6 +7,7 @@ import { GeneralComponentsModule } from './general-components/general-components
 import { LoginMenuModule } from './login-menu/login-menu.module';
 import { AppRoutingModule } from './app-routing.module';
 import { IHaveCoronaModule } from "./i-have-corona/i-have-corona.module";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { IHaveCoronaModule } from "./i-have-corona/i-have-corona.module";
     LoginMenuModule,
     FormsModule,
     AppRoutingModule,
-    IHaveCoronaModule
+    IHaveCoronaModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
