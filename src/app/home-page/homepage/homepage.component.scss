@@ -1,0 +1,41 @@
+.hompage{
+    margin-top: 20px;
+    .container{
+        text-align:center;
+        .mat-flat-button{
+            background-color:#6FB98F;
+            color: white;
+            font-size: 14px;
+            margin-left: 5px;
+            margin-right: 5px;
+            display: inline-block;
+        }
+        .mat-flat-button:hover{
+            background-color: #609676;
+        }
+    }
+    .wrapper{
+        display: flex;
+        .coronapng{
+            position: relative;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            .coronascore{
+                position: absolute;
+                font-size: 45px;
+                color: white;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        .meldingen{
+            margin: 20px;
+        }
+
+    }
+
+}

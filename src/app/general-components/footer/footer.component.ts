@@ -14,6 +14,7 @@ export class FooterComponent implements OnInit {
   currentYear = new Date().getFullYear()
   ngOnInit(): void {
   }
+  
 
   handleClick(id): void {
     switch(id) {
