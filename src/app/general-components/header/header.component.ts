@@ -10,7 +10,11 @@ export class HeaderComponent implements OnInit {
   loginName = "Generic First Name"
   constructor() { }
 
-  ngOnInit(): void {
+  logout() {
+    localStorage.removeItem("token");
   }
 
+  ngOnInit(): void {
+    console.log("see mee")
+  }
 }

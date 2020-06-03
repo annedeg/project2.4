@@ -6,7 +6,7 @@
         <div class="header-buttons">
             <span *ngIf="loginName">{{loginName}}</span>
             <button mat-flat-button id="settings">Settings</button>
-            <button mat-flat-button *ngIf="loginName" id="login">Logout</button>
+            <button mat-flat-button *ngIf="loginName" id="login" (click)=logout()>Logout</button>
             <button mat-flat-button *ngIf="!loginName" id="login">Login</button>
         </div>
     </div> 
