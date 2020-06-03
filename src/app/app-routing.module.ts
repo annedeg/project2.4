@@ -6,7 +6,6 @@ import { HeaderComponent } from './general-components/header/header.component';
 import { FooterComponent } from './general-components/footer/footer.component';
 import { HomepageComponent } from './home-page/homepage/homepage.component';
 import { CoronaFormComponent } from './i-have-corona/coronaform/coronaform.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ValidationService } from './validation.service';
 import { ValidationGuardService } from './validation-guard.service';
 
