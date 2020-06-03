@@ -20,7 +20,7 @@ export class ValidationService {
     formData.append('username', username)
     formData.append('password', password)
     console.log(API_URL+'/check_user')
-    return this.http.post<User>(API_URL+'/check_user', formData)
+    return this.http.post<User>(API_URL+'/login', formData)
     .pipe (
         tap ( 
             response => this.setSession(response),
@@ -31,7 +31,8 @@ export class ValidationService {
   }
 
   setSession(response) {
-    localStorage.setItem('token', response.token)
+    console.log(response.access_token)
+    localStorage.setItem('token', response.access_token)
   } 
 
   handleError(err) {
