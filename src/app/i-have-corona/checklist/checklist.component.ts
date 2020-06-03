@@ -21,6 +21,8 @@ export class ChecklistComponent implements OnInit {
   lowSymptomConfirmationPage : Boolean = false;
   wrongPassword : Boolean = false;
 
+  lowSymptoms : number = 3; //arbitrary number of a low symptom count
+
 
   constructor() { }
 
@@ -40,7 +42,7 @@ export class ChecklistComponent implements OnInit {
       this.symptomsPage = false;
       this.noSymptomsPage = true;
     }
-    else if (symptomTotal < 3) { //the 3 is arbitrary
+    else if (symptomTotal < this.lowSymptoms) {
       this.symptomsPage = false;
       this.lowSymptomConfirmationPage = true;
     }
