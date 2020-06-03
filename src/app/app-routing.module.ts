@@ -7,7 +7,8 @@ import { FooterComponent } from './general-components/footer/footer.component';
 import { HomepageComponent } from './home-page/homepage/homepage.component';
 import { CoronaFormComponent } from './i-have-corona/coronaform/coronaform.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './auth-interceptor';
+import { ValidationService } from './validation.service';
+import { ValidationGuardService } from './validation-guard.service';
 
 const routes: Routes = [
   {
@@ -16,10 +17,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'login', component: LoginMenuComponent },
-  { path: 'header', component: HeaderComponent },
-  { path: 'footer', component: FooterComponent },
-  { path: 'homepage', component: HomepageComponent },
-  { path: 'coronaform', component: CoronaFormComponent },
+  { path: 'header', component: HeaderComponent, canActivate:[ValidationGuardService] },
+  { path: 'footer', component: FooterComponent, canActivate:[ValidationGuardService] },
+  { path: 'homepage', component: HomepageComponent, canActivate:[ValidationGuardService] },
+  { path: 'coronaform', component: CoronaFormComponent, canActivate:[ValidationGuardService] },
 ]
 
 @NgModule({
@@ -28,6 +29,10 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes)
   ],
-  exports: [RouterModule],
+  providers: [
+    ValidationService,
+    ValidationGuardService,
+  ],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
