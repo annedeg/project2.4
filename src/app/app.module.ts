@@ -19,7 +19,7 @@ import { IHaveCoronaModule } from "./i-have-corona/i-have-corona.module";
     BrowserAnimationsModule,
     AppRoutingModule,
     IHaveCoronaModule,
-    GeneralComponentsModule
+    GeneralComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

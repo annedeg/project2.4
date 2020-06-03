@@ -1,6 +1,6 @@
 <div *ngIf="startPage">
   <p>Heb je een officiele Corona-diagnosis? </p>
-  <button (click)="showCoronaConfirmed()">Ja</button>
+  <button (click)="showPassword()">Ja</button>
   <button (click)="showSymptomsList()">Nee</button>
 </div>
 
@@ -11,11 +11,38 @@
 
 <div *ngIf="symptomsPage">
   <p>Geef hier alsjeblieft aan welke symptomen je hebt.</p>
-  <form *ngFor="let symptom of symptoms">
-    <input type = checkbox>
-    <label>{{symptom[0]}}</label>
-    <br>
-  </form>
-  <br>
-  <button (click)="showCoronaConfirmed()">Bevestigen</button>
+  <div >
+    <form id="symptomsForm">
+        <div *ngFor="let symptom of symptoms">
+          <input type = checkbox>
+        <label>{{symptom[0]}}</label>
+      </div>
+    </form>
+  </div>
+  <button (click)="checkSymptoms()">Bevestigen</button>
 </div>
+
+<div *ngIf="passwordPage">
+  <p>Waarschuwing: Je gaat nu bevestigen dat je besmet bent met het Corona-virus. Alle mensen waarmee je recentelijk
+  in contact bent geweest zullen een notificatie krijgen dat zij ook mogelijk besmet zijn. Doe dit niet als grap.</p>
+  <p>Vul alsjeblieft je wachtwoord in om je besmetting te bevestigen.</p>
+  <p *ngIf="wrongPassword">Wachtwoord onjuist, probeer alsjeblieft opnieuw.</p>
+  <form>
+    <input type = password #password><br>
+    <button type = button (click)="confirmPassword(password.value)">Bevestigen</button>
+  </form>
+</div>
+
+<div *ngIf="noSymptomsPage">
+  <p>Als je helemaal geen symptomen hebt, is het onwaarschijnlijk dat je een Corona besmetting hebt. Overweeg
+    alsjeblieft goed of je wel echt een Corona besmetting hebt alvorens deze functie te gebruiken.</p>
+  <button (click)="showStartPage()">Terug</button>
+</div>
+
+<div *ngIf="lowSymptomConfirmationPage">
+  <p>Je lijkt maar een paar symptomen van Corona te hebben. Weet je zeker dat dit niet een andere ziekte is? Overweeg
+    alsjeblieft goed of je wel echt een Corona besmetting hebt alvorens deze functie te gebruiken.</p>
+  <button (click)="showPassword()">Ik weet zeker dat ik Corona heb</button>
+  <button (click)="showStartPage()">Terug</button>
+</div>
+
