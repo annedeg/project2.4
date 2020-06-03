@@ -9,8 +9,10 @@ export class ValidationGuardService implements CanActivate {
 
   constructor(public validation: ValidationService, public router: Router) {}
 
-  canActivate(): boolean {
-    if (!this.validation.checkSession()) {
+  async canActivate(): Promise<boolean> {
+    await this.validation.checkSession()
+    console.log("fuck you bitch " + this.validation.success)
+    if (!this.validation.success) {
       this.router.navigateByUrl('/login');
       return false;
     }

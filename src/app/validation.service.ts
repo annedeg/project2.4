@@ -11,15 +11,16 @@ const API_URL = 'http://sodine.nl:5000/api/v1.0'
 })
 export class ValidationService {
   uploadForm;
+  public success: boolean = true;
   constructor(private formBuilder: FormBuilder, private http:HttpClient) { }
-
+  
   doGetApiCall(url:string, authorization:string) {
     if(authorization == null) {
       return this.http
         .get(API_URL+url)
         .pipe(
           catchError((err: HttpErrorResponse) => {
-            this.success(false)
+            this.success = false;
             return throwError(err.statusText)
           })
         )
@@ -61,18 +62,13 @@ export class ValidationService {
     localStorage.setItem('token', response.access_token)
   } 
 
-  checkSession() {
+  async checkSession() {
     let response = this.doGetApiCall('/auth', localStorage.getItem("token"))
-    response.subscribe(response => this.success(true))
+    response.subscribe(response => this.success = true)
   }
 
-  success(succes) {
-    if(succes) {
-      console.log("you are authorized")
-    } else {
-      console.log("i hope you die you scum")
-    }
-  }
+
+
 
   handleError(err) {
     console.log('ERROR')

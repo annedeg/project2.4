@@ -13,8 +13,7 @@ export class HomepageComponent implements OnInit {
   constructor(private validationService: ValidationService ,private router: Router) { }
 
   ngOnInit(): void {
-    console.log("homepage")
-    this.validationService.checkSession()
+
   }
 
   btnClick= function () {
