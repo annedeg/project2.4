@@ -7,6 +7,7 @@
 <div *ngIf="coronaConfirmedPage">
   <p>Je staat nu aangegeven als besmet met Corona. De personen met wie je in contact bent geweest zullen via Sodine
   een notifcatie krijgen dat zij ook mogelijk besmet zijn.</p>
+  <button mat-flat-button (click)="btnClick();">Terug naar profiel</button>
 </div>
 
 <div *ngIf="symptomsPage">

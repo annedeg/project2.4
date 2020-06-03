@@ -15,7 +15,7 @@ export class HomepageComponent implements OnInit {
   }
 
   btnClick= function () {
-    this.router.navigateByUrl('/ikhebcorona');
+    this.router.navigateByUrl('/coronaform');
 };
 
   

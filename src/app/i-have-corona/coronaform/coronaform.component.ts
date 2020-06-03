@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-checklist',
-  templateUrl: './checklist.component.html',
-  styleUrls: ['./checklist.component.scss']
+  selector: 'coronaform',
+  templateUrl: './coronaform.component.html',
+  styleUrls: ['./coronaform.component.scss']
 })
-export class ChecklistComponent implements OnInit {
+export class CoronaFormComponent implements OnInit {
 
-  //List of symptoms for the Corona-virus, as defined by the WHO, a long with a number indicating their likelihood to be
-  //an indicator for Corona (all set to 1 for now).
+  // List of symptoms for the Corona-virus, as defined by the WHO, along with a number indicating their likelihood to be
+  // an indicator for Corona (all set to 1 for now).
   symptoms  =  [['Koorts', 1],[ 'Droge hoest', 1],['Pijn in het lichaam', 1],['Keelpijn', 1],['Hoofdpijn',1],
     ['Diarree', 1],['Blindvliesontsteking', 1], ['Kortademigheid of ademhalingsproblemen', 1],
     ['Pijn of druk op de borst', 1], ['Aangetast spraak- of bewegingsvermogen', 1]];
@@ -18,7 +19,7 @@ export class ChecklistComponent implements OnInit {
   symptomsPage : Boolean = false;
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -33,4 +34,8 @@ export class ChecklistComponent implements OnInit {
     this.startPage = false;
     this.symptomsPage = true;
   }
+
+  btnClick= function () {
+    this.router.navigateByUrl('/homepage');
+  };
 }

@@ -23,7 +23,7 @@ export class LoginMenuComponent implements OnInit {
   validateResponses() {
     this.validationService.validate(this.mail, this.password).subscribe(
       () => {
-          this.router.navigate(['header'])
+          this.router.navigate(['homepage'])
       },
       () => {
           this.message="Gegevens niet correct"
