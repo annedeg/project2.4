@@ -8,18 +8,21 @@ import { HomepageComponent } from './home-page/homepage/homepage.component';
 import { CoronaFormComponent } from './i-have-corona/coronaform/coronaform.component';
 import { ValidationService } from './validation.service';
 import { ValidationGuardService } from './validation-guard.service';
+import { SettingsModule } from './settings/settings.module';
+import { SettingsPageComponent } from './settings/settings-page/settings-page.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: "/login",
     pathMatch: 'full'
-  },
+  }, 
   { path: 'login', component: LoginMenuComponent },
   { path: 'header', component: HeaderComponent, canActivate:[ValidationGuardService] },
   { path: 'footer', component: FooterComponent, canActivate:[ValidationGuardService] },
   { path: 'homepage', component: HomepageComponent, canActivate:[ValidationGuardService] },
   { path: 'coronaform', component: CoronaFormComponent, canActivate:[ValidationGuardService] },
+  { path: 'settings', component: SettingsPageComponent, canActivate:[ValidationGuardService]},
 ]
 
 @NgModule({

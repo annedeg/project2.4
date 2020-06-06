@@ -62,14 +62,6 @@ export class ValidationService {
     localStorage.setItem('token', response.access_token)
   } 
 
-  async checkSession() {
-    let response = this.doGetApiCall('/auth', localStorage.getItem("token"))
-    response.subscribe(response => this.success = true)
-  }
-
-
-
-
   handleError(err) {
     console.log('ERROR')
   }

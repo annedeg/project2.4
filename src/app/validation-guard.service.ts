@@ -9,14 +9,11 @@ export class ValidationGuardService implements CanActivate {
 
   constructor(public validation: ValidationService, public router: Router) {}
 
-  async canActivate(): Promise<boolean> {
-    await this.validation.checkSession()
-    console.log("fuck you bitch " + this.validation.success)
-    if (!this.validation.success) {
+  canActivate(): boolean {
+    if (localStorage.getItem("token") == null) {
       this.router.navigateByUrl('/login');
       return false;
     }
     return true;
-  }
-
+  } 
 }
