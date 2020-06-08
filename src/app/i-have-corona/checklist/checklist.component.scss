@@ -1,0 +1,27 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white ;
+    color: black ;
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 20px;
+    .awnsers {
+        button {
+            margin: 8px;
+        }
+    }
+
+    .symptoms {
+        form {
+            div {
+                input {
+                    background-color: #eee;
+                }
+            }
+        }
+    }
+}
