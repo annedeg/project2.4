@@ -20,6 +20,10 @@ export class LoginMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  registreer() {
+    this.router.navigate(['register']);
+  }
+
   validateResponses() {
     this.validationService.validate(this.mail, this.password).subscribe(
       () => {

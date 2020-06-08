@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>BESTAANDE GEBRUIKER</h1>
+    <h1>Inloggen</h1>
     <h1 style="color:red">{{message}}</h1>
     
     <label>E-Mail</label>
@@ -7,7 +7,9 @@
 
     <label>Wachtwoord</label>
     <input type="password" [(ngModel)]="password" placeholder="Uw wachtwoord">
-
-    <label class="button" (click)="validateResponses()">It's Coronatime!</label>
+    <div class="buttons">
+        <label class="button" (click)="validateResponses()">Login!</label>
+        <label class="link" (click)="registreer()">Registreer</label>
+    </div>
 </div>
 
