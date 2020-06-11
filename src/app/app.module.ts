@@ -9,10 +9,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { IHaveCoronaModule } from "./i-have-corona/i-have-corona.module";
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegisterPageComponent
   ],
   imports: [
     RouterModule,

@@ -11,13 +11,17 @@ import { ValidationService } from 'src/app/validation.service';
 
 export class LoginMenuComponent implements OnInit {
 
-  mail: string = "";
-  password: string = "";
-  message: string = "";
+  mail: string;
+  password: string;
+  message: string;
 
   constructor(private validationService:ValidationService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  registreer() {
+    this.router.navigate(['register']);
   }
 
   validateResponses() {

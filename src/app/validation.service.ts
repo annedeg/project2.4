@@ -58,12 +58,10 @@ export class ValidationService {
   }
 
   setSession(response) {
-    console.log(response.access_token)
     localStorage.setItem('token', response.access_token)
   } 
 
   handleError(err) {
-    console.log('ERROR')
   }
 
 }

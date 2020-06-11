@@ -10,6 +10,7 @@ import { ValidationService } from './validation.service';
 import { ValidationGuardService } from './validation-guard.service';
 import { SettingsModule } from './settings/settings.module';
 import { SettingsPageComponent } from './settings/settings-page/settings-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'homepage', component: HomepageComponent, canActivate:[ValidationGuardService] },
   { path: 'coronaform', component: CoronaFormComponent, canActivate:[ValidationGuardService] },
   { path: 'settings', component: SettingsPageComponent, canActivate:[ValidationGuardService]},
+  { path: 'register', component: RegisterPageComponent}
 ]
 
 @NgModule({

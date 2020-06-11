@@ -50,11 +50,11 @@ input {
 }
 
 .buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  * {
-      margin: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    * {
+        margin: 8px;
+    }
   }
-}
