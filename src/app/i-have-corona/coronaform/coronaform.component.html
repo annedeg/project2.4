@@ -1,22 +1,50 @@
-<div *ngIf="startPage">
+<div class="page" *ngIf="startPage">
   <p>Heb je een officiele Corona-diagnosis? </p>
-  <button (click)="showCoronaConfirmed()">Ja</button>
-  <button (click)="showSymptomsList()">Nee</button>
+  <div class="awnsers">
+    <button class="mat-focus-indicator mat-flat-button mat-button-base" (click)="showPassword()">Ja</button>
+    <button class="mat-focus-indicator mat-flat-button mat-button-base" (click)="showSymptomsList()">Nee</button>
+  </div>
 </div>
 
-<div *ngIf="coronaConfirmedPage">
+<div class="page" *ngIf="coronaConfirmedPage">
   <p>Je staat nu aangegeven als besmet met Corona. De personen met wie je in contact bent geweest zullen via Sodine
   een notifcatie krijgen dat zij ook mogelijk besmet zijn.</p>
   <button (click)="btnClick();">Terug naar profiel</button>
 </div>
 
-<div *ngIf="symptomsPage">
+<div class="page" *ngIf="symptomsPage">
   <p>Geef hier alsjeblieft aan welke symptomen je hebt.</p>
-  <form *ngFor="let symptom of symptoms">
-    <input type = checkbox>
-    <label>{{symptom[0]}}</label>
-    <br>
-  </form>
-  <br>
-  <button (click)="showCoronaConfirmed()">Bevestigen</button>
+  <div class="symptoms">
+    <form id="symptomsForm">
+        <div *ngFor="let symptom of symptoms">
+          <label><input type = "checkbox">{{symptom[0]}}</label>
+      </div>
+    </form>
+  </div>
+  <button  class="mat-focus-indicator mat-flat-button mat-button-base"  (click)="checkSymptoms()">Bevestigen</button>
 </div>
+
+<div class="page" *ngIf="passwordPage">
+  <p>Waarschuwing: Je gaat nu bevestigen dat je besmet bent met het Corona-virus. Alle mensen waarmee je recentelijk
+  in contact bent geweest zullen een notificatie krijgen dat zij ook mogelijk besmet zijn. Doe dit niet als grap.</p>
+  <p>Vul alsjeblieft je wachtwoord in om je besmetting te bevestigen.</p>
+  <p *ngIf="wrongPassword">Wachtwoord onjuist, probeer alsjeblieft opnieuw.</p>
+  <form>
+    <input type = password #password><br>
+    <button  class="mat-focus-indicator mat-flat-button mat-button-base"  type = button (click)="confirmPassword(password.value)">Bevestigen</button>
+  </form>
+</div>
+
+<div class="page" *ngIf="noSymptomsPage">
+  <p>Als je helemaal geen symptomen hebt, is het onwaarschijnlijk dat je een Corona besmetting hebt. Overweeg
+    alsjeblieft goed of je wel echt een Corona besmetting hebt alvorens deze functie te gebruiken.</p>
+  <button class="mat-focus-indicator mat-flat-button mat-button-base"  (click)="showStartPage()">Terug</button>
+</div>
+
+<div class="page" *ngIf="lowSymptomConfirmationPage">
+  <p>Je lijkt maar een paar symptomen van Corona te hebben. Weet je zeker dat dit niet een andere ziekte is? Overweeg
+    alsjeblieft goed of je wel echt een Corona besmetting hebt alvorens deze functie te gebruiken.</p>
+  <button class="mat-focus-indicator mat-flat-button mat-button-base"  (click)="showPassword()">Ik weet zeker dat ik Corona heb</button>
+  <button class="mat-focus-indicator mat-flat-button mat-button-base"  (click)="showStartPage()">Terug</button>
+</div>
+
