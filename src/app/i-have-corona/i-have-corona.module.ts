@@ -1,16 +1,17 @@
 import {NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChecklistComponent } from './checklist/checklist.component';
-
+import { CoronaFormComponent } from './coronaform/coronaform.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [ChecklistComponent],
+  declarations: [CoronaFormComponent],
   exports: [
-    ChecklistComponent
+    CoronaFormComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
   ]
 })
 export class IHaveCoronaModule {

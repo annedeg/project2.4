@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChecklistComponent } from './checklist.component';
+import { RegisterMenuComponent } from './register-menu.component';
 
-describe('ChecklistComponent', () => {
-  let component: ChecklistComponent;
-  let fixture: ComponentFixture<ChecklistComponent>;
+describe('RegisterMenuComponent', () => {
+  let component: RegisterMenuComponent;
+  let fixture: ComponentFixture<RegisterMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChecklistComponent ]
+      declarations: [ RegisterMenuComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChecklistComponent);
+    fixture = TestBed.createComponent(RegisterMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

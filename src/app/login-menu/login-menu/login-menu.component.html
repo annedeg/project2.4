@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>BESTAANDE GEBRUIKER</h1>
+    <h1 style="color:red">{{message}}</h1>
+    
+    <label>E-Mail</label>
+    <input type="text" [(ngModel)]="mail" placeholder="Uw e-mailadres">
+
+    <label>Wachtwoord</label>
+    <input type="password" [(ngModel)]="password" placeholder="Uw wachtwoord">
+
+    <label class="button" (click)="validateResponses()">It's Coronatime!</label>
+</div>
+

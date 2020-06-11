@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ValidationService } from 'src/app/validation.service';
 
 
 @Component({
@@ -9,13 +10,14 @@ import { Router } from '@angular/router';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private validationService: ValidationService ,private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
   btnClick= function () {
-    this.router.navigateByUrl('/ikhebcorona');
+    this.router.navigateByUrl('/coronaform');
 };
 
   
