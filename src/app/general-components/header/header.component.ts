@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
   }
 
   settings() { 
-    console.log(" d")
     this.router.navigate(['settings'])
   }
 
