@@ -10,6 +10,7 @@ import { IHaveCoronaModule } from "./i-have-corona/i-have-corona.module";
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { ChangePasswordComponent } from './settings/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     AppRoutingModule,
     IHaveCoronaModule,
     HttpClientModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
   ],
   exports: [RouterModule],
   providers: [],

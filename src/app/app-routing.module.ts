@@ -11,6 +11,7 @@ import { ValidationGuardService } from './validation-guard.service';
 import { SettingsModule } from './settings/settings.module';
 import { SettingsPageComponent } from './settings/settings-page/settings-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { ChangePasswordComponent } from './settings/change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
   { path: 'homepage', component: HomepageComponent, canActivate:[ValidationGuardService] },
   { path: 'coronaform', component: CoronaFormComponent, canActivate:[ValidationGuardService] },
   { path: 'settings', component: SettingsPageComponent, canActivate:[ValidationGuardService]},
-  { path: 'register', component: RegisterPageComponent}
+  { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate:[ValidationGuardService]}
 ]
 
 @NgModule({

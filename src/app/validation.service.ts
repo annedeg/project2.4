@@ -17,47 +17,47 @@ export class ValidationService {
   doGetApiCall(url:string, authorization:string) {
     if(authorization == null) {
       return this.http
-        .get(API_URL+url)
-        .pipe(
-          catchError((err: HttpErrorResponse) => {
-            this.success = false;
-            return throwError(err.statusText)
-          })
-        )
+        .get(API_URL+url).toPromise();
     } else {
-      return this.http.get(API_URL+url, {headers: new HttpHeaders().set('Authorization', "Bearer " + authorization)})
+      return this.http.get(API_URL+url, {headers: new HttpHeaders().set('Authorization', "Bearer " + authorization)}).toPromise();
     }
   }
 
   doPostApiCall(url:string, formData:FormData, authorization:string) {
       if(authorization == null) {
-        return this.http.post(API_URL+url, formData);
+        return this.http.post(API_URL+url, formData).toPromise();
       } else if(formData == null) {
-        return this.http.post(API_URL+url, {headers: new HttpHeaders().set('Authorization', authorization)});
+        return this.http.post(API_URL+url, {headers: new HttpHeaders().set('Authorization', "Bearer " + authorization)}).toPromise();
       } else {
-        return this.http.post(API_URL+url, formData, {headers: new HttpHeaders().set('Authorization', authorization)});
+        return this.http.post(API_URL+url, formData, {headers: new HttpHeaders().set('Authorization', "Bearer " + authorization)}).toPromise();
       }
   }
 
-  validate(username:string, password:string) {
+  doPutApiCall(url:string, formData:FormData, authorization:string) {
+    if(authorization == null) {
+      return this.http.put(API_URL+url, formData).toPromise();
+    } else if(formData == null) {
+      return this.http.put(API_URL+url, {headers: new HttpHeaders().set('Authorization', "Bearer " + authorization)}).toPromise();
+    } else {
+      console.log("we ride at dawn bitch")
+      return this.http.put(API_URL+url, formData, {headers: new HttpHeaders().set('Authorization', "Bearer " + authorization)}).toPromise();
+    }
+  }
+
+  async validate(email:string, password:string) {
     this.uploadForm = this.formBuilder.group({
       profile: ['']
     });
     const formData = new FormData();
-    formData.append('username', username)
+    formData.append('email', email)
     formData.append('password', password)
     
-    return this.doPostApiCall("/login", formData, null)
-    .pipe (
-        tap ( 
-            response => this.setSession(response),
-            err => this.handleError(err),
-        ),
-        shareReplay()
-    )
+    return await this.doPostApiCall("/login", formData, null)
+    
   }
 
-  setSession(response) {
+  setSession(response: Token) {
+    console.log(response.access_token)
     localStorage.setItem('token', response.access_token)
   } 
 
@@ -66,7 +66,6 @@ export class ValidationService {
 
 }
 
-interface User {
-  username:String,
-  password:String,
+interface Token {
+  access_token:string
 }
