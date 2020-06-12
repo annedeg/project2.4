@@ -1,0 +1,22 @@
+<div>
+  <h1>Instellingen</h1>
+  <div *ngIf="usernameEdit == false">
+    <p>NaamymcNaamface <button (click)="usernameEditToggle()">Wijzig</button></p>
+  </div>
+  <div *ngIf="usernameEdit == true">
+    <form><input value = NaamymcNaamface> <button (click)="editUsername()">Bevestigen</button></form>
+  </div>
+  <button>Wijzig Wachtwoord</button>
+  <br>
+  <p>Wilt u een mail notificatie ontvangen bij Corona besmetting?</p>
+  <form><input type = radio name="mailSetting" checked = checked>Ja<input type = radio name="mailSetting">Nee</form>
+  <br>
+  <button (click)="deleteConfirmToggle()">Verwijder alle Gegevens</button>
+  <div *ngIf="deleteConfirmation">
+    <p>Dit verwijdert alle gegevens. Weet je dit zeker? Vul alsjeblieft je wachtwoord in om dit te bevestigen.</p>
+    <input type = password #deletionPassword>
+    <button (click)="deletionPasswordCheck(deletionPassword.value)">Bevestigen</button>
+  </div>
+  <br><br>
+  <button>Terug</button>
+</div>
