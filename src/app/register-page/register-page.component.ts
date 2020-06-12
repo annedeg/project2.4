@@ -10,6 +10,8 @@ export class RegisterPageComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  message: String;
+  
   ngOnInit(): void {
   }
 
