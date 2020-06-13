@@ -18,20 +18,21 @@ const routes: Routes = [
     path: '',
     redirectTo: "/login",
     pathMatch: 'full'
-  }, 
+  },  
   { path: 'login', component: LoginMenuComponent },
   { path: 'header', component: HeaderComponent, canActivate:[ValidationGuardService] },
   { path: 'footer', component: FooterComponent, canActivate:[ValidationGuardService] },
   { path: 'homepage', component: HomepageComponent, canActivate:[ValidationGuardService] },
   { path: 'coronaform', component: CoronaFormComponent, canActivate:[ValidationGuardService] },
+  { path: 'register', component: RegisterPageComponent, canActivate:[ValidationGuardService]},
   { path: 'settings', component: SettingsPageComponent, canActivate:[ValidationGuardService]},
   { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate:[ValidationGuardService]}
 ]
-
+ 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
+    CommonModule, 
     RouterModule.forRoot(routes)
   ],
   providers: [
