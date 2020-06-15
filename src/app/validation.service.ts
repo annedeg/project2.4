@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
-const API_URL = 'http://sodine.nl:5000/api/v1.0'
+const API_URL = 'https://sodine.nl:5000/api/v1.0'
 @Injectable({
   providedIn: 'root'
 })
