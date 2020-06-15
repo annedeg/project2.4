@@ -14,7 +14,7 @@ export class LoginMenuComponent implements OnInit {
   mail: string;
   password: string;
   message: string;
-
+  token: Token;
   constructor(private validationService:ValidationService, private router: Router) { }
 
   ngOnInit(): void {
@@ -25,22 +25,21 @@ export class LoginMenuComponent implements OnInit {
   }
 
   validateResponses() {
-    this.validationService.validate(this.mail, this.password).subscribe(
-      () => {
-          this.router.navigate(['homepage'])
-      },
-      () => {
-          this.message="Gegevens niet correct"
+    this.validationService.validate(this.mail, this.password).catch((error) => error)
+    .then((data)=> this.token = <Token> data)
+    .then(() => {
+      if(this.token.access_token == undefined) {
+        this.message = "Gegevens incorrect"
+      } else {
+        this.validationService.setSession(this.token)
+        this.router.navigate(['homepage'])
       }
-    );
-  }
+    })
+    .finally(() => this.router.navigate(['homepage']))
 
-  validateResponsesDATABASE() {
-    let theUrl = "https://www.sodine.nl/" + this.mail + this.password;
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
   }
 }
 
+interface Token {
+  access_token:string
+}

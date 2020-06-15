@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-settings-page',
-  templateUrl: './settings-page.component.html',
-  styleUrls: ['./settings-page.component.scss']
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss']
 })
+export class SettingsComponent implements OnInit {
 
-export class SettingsPageComponent implements OnInit {
   usernameEdit : boolean = false;
   deleteConfirmation : boolean = false;
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -53,10 +52,6 @@ export class SettingsPageComponent implements OnInit {
 
   deleteData() {
     //TODO Actually delete the data, and take the user back to the log in page
-  }
-
-  changePassword() {
-    this.router.navigate(['settings/wijzig-wachtwoord'])
   }
 
 }
