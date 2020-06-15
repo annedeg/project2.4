@@ -19,28 +19,23 @@ export class ValidationService {
       return this.http
         .get(API_URL+url).toPromise();
     } else {
-      return this.http.get(API_URL+url, {headers: new HttpHeaders().set('Authorization', "Bearer " + authorization)}).toPromise();
+      return this.http.get(API_URL+url+"?jwt="+authorization).toPromise();
     }
   }
 
   doPostApiCall(url:string, formData:FormData, authorization:string) {
       if(authorization == null) {
         return this.http.post(API_URL+url, formData).toPromise();
-      } else if(formData == null) {
-        return this.http.post(API_URL+url, {headers: new HttpHeaders().set('Authorization', "Bearer " + authorization)}).toPromise();
       } else {
-        return this.http.post(API_URL+url, formData, {headers: new HttpHeaders().set('Authorization', "Bearer " + authorization)}).toPromise();
+        return this.http.post(API_URL+url+"?jwt="+authorization, formData).toPromise();
       }
   }
 
   doPutApiCall(url:string, formData:FormData, authorization:string) {
     if(authorization == null) {
-      return this.http.put(API_URL+url, formData).toPromise();
-    } else if(formData == null) {
-      return this.http.put(API_URL+url, {headers: new HttpHeaders().set('Authorization', "Bearer " + authorization)}).toPromise();
+      return this.http.put(API_URL+url+"?jwt="+authorization, formData).toPromise();
     } else {
-      console.log("we ride at dawn bitch")
-      return this.http.put(API_URL+url, formData, {headers: new HttpHeaders().set('Authorization', "Bearer " + authorization)}).toPromise();
+      return this.http.put(API_URL+url+"?jwt="+authorization, formData).toPromise();
     }
   }
 
@@ -63,7 +58,7 @@ export class ValidationService {
 
   handleError(err) {
   }
-
+ 
 }
 
 interface Token {
