@@ -1,5 +1,6 @@
+import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, Router, NavigationStart } from '@angular/router'
+import { RouterModule, Routes, Router, NavigationStart } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginMenuComponent } from './login-menu/login-menu/login-menu.component';
 import { HeaderComponent } from './general-components/header/header.component';
@@ -8,32 +9,32 @@ import { HomepageComponent } from './home-page/homepage/homepage.component';
 import { CoronaFormComponent } from './i-have-corona/coronaform/coronaform.component';
 import { ValidationService } from './validation.service';
 import { ValidationGuardService } from './validation-guard.service';
-import { SettingsModule } from './settings/settings.module';
 import { SettingsPageComponent } from './settings/settings-page/settings-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { ChangePasswordComponent } from './settings/change-password/change-password.component';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: "/login",
+    redirectTo: '/login',
     pathMatch: 'full'
-  },  
+  },
   { path: 'login', component: LoginMenuComponent },
-  { path: 'header', component: HeaderComponent, canActivate:[ValidationGuardService] },
-  { path: 'footer', component: FooterComponent, canActivate:[ValidationGuardService] },
-  { path: 'homepage', component: HomepageComponent, canActivate:[ValidationGuardService] },
-  { path: 'coronaform', component: CoronaFormComponent, canActivate:[ValidationGuardService] },
-  { path: 'register', component: RegisterPageComponent, canActivate:[ValidationGuardService]},
-  { path: 'settings', component: SettingsPageComponent, canActivate:[ValidationGuardService]},
-  { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate:[ValidationGuardService]}
+  { path: 'header', component: HeaderComponent, canActivate: [ValidationGuardService] },
+  { path: 'footer', component: FooterComponent, canActivate: [ValidationGuardService] },
+  { path: 'homepage', component: HomepageComponent, canActivate: [ValidationGuardService] },
+  { path: 'coronaform', component: CoronaFormComponent, canActivate: [ValidationGuardService] },
+  { path: 'register', component: RegisterPageComponent, canActivate: [ValidationGuardService]},
+  { path: 'settings', component: SettingsPageComponent, canActivate: [ValidationGuardService]},
+  { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate: [ValidationGuardService]}
 ]
  
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule, 
-    RouterModule.forRoot(routes)
+    CommonModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [
     ValidationService,

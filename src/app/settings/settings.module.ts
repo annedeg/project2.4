@@ -13,7 +13,9 @@ import { FormsModule } from '@angular/forms';
   exports: [
     SettingsPageComponent, ChangePasswordComponent
   ],
-  imports: [    CommonModule,
-    FormsModule,]
+  imports: [
+    CommonModule,
+    FormsModule,
+  ]
 })
 export class SettingsModule { }
