@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule, Router } from '@angular/router';
 import { AppComponent } from './app.component';
 import { GeneralComponentsModule } from './general-components/general-components.module';
@@ -9,28 +9,29 @@ import { LoginMenuModule } from './login-menu/login-menu.module';
 import { AppRoutingModule } from './app-routing.module';
 import { IHaveCoronaModule } from './i-have-corona/i-have-corona.module';
 import { HttpClientModule } from '@angular/common/http';
-import { RegisterPageComponent } from './register-page/register-page.component';
-import { ChangePasswordComponent } from './settings/change-password/change-password.component';
+import {SettingsModule} from "./settings/settings.module";
+import {MatBadgeModule} from "@angular/material/badge";
+import {HomePageModule} from "./home-page/home-page.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterPageComponent
   ],
   imports: [
-      CommonModule,
+    CommonModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     RouterModule,
     GeneralComponentsModule,
     LoginMenuModule,
     AppRoutingModule,
     IHaveCoronaModule,
     HttpClientModule,
-    FormsModule,
+      SettingsModule,
+      HomePageModule
   ],
-  exports: [RouterModule],
+  exports: [RouterModule,
+    MatBadgeModule],
   providers: [],
   bootstrap: [AppComponent]
 })

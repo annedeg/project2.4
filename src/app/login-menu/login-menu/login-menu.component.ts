@@ -18,6 +18,7 @@ export class LoginMenuComponent implements OnInit {
   constructor(private validationService:ValidationService, private router: Router) { }
 
   ngOnInit(): void {
+    localStorage.clear();
   }
 
   registreer() {

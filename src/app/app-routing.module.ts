@@ -10,9 +10,10 @@ import { CoronaFormComponent } from './i-have-corona/coronaform/coronaform.compo
 import { ValidationService } from './validation.service';
 import { ValidationGuardService } from './validation-guard.service';
 import { SettingsPageComponent } from './settings/settings-page/settings-page.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
 import { ChangePasswordComponent } from './settings/change-password/change-password.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {LoginMenuModule} from "./login-menu/login-menu.module";
+import {RegisterMenuComponent} from "./login-menu/register-menu/register-menu.component";
 const routes: Routes = [
   {
     path: '',
@@ -24,7 +25,7 @@ const routes: Routes = [
   { path: 'footer', component: FooterComponent, canActivate: [ValidationGuardService] },
   { path: 'homepage', component: HomepageComponent, canActivate: [ValidationGuardService] },
   { path: 'coronaform', component: CoronaFormComponent, canActivate: [ValidationGuardService] },
-  { path: 'register', component: RegisterPageComponent, canActivate: [ValidationGuardService]},
+  { path: 'register', component: RegisterMenuComponent},
   { path: 'settings', component: SettingsPageComponent, canActivate: [ValidationGuardService]},
   { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate: [ValidationGuardService]}
 ]
@@ -35,6 +36,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     RouterModule.forRoot(routes),
+      LoginMenuModule,
   ],
   providers: [
     ValidationService,

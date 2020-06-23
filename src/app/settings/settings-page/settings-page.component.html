@@ -1,10 +1,7 @@
 <div>
     <h1>Instellingen</h1>
-    <div *ngIf="usernameEdit == false">
-      <p>NaamymcNaamface <button (click)="usernameEditToggle()">Wijzig</button></p>
-    </div>
-    <div *ngIf="usernameEdit == true">
-      <form><input value = NaamymcNaamface> <button (click)="editUsername()">Bevestigen</button></form>
+    <div>
+      <p>{{username}}</p>
     </div>
     <button (click)=changePassword()>Wijzig Wachtwoord</button>
     <br>

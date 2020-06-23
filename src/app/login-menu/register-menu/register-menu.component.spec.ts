@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {RegisterMenuComponent} from "./register-menu.component";
 
-import { RegisterMenuComponent } from './register-menu.component';
 
 describe('RegisterMenuComponent', () => {
   let component: RegisterMenuComponent;

@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { shareReplay, tap } from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { rejects } from 'assert';
+
 const API_URL = 'https://sodine.nl:5000/api/v1.0'
 @Injectable({
   providedIn: 'root'
@@ -14,12 +10,11 @@ export class ValidationService {
   user_id;
   private user_name = new BehaviorSubject('');
   usernameChange: Subject<string> = new Subject<string>();
-  uploadForm;
 
   username_public = this.user_name.asObservable();
 
   public success: boolean = true;
-  constructor(private formBuilder: FormBuilder, private http:HttpClient) { }
+  constructor( private http:HttpClient) { }
 
   update_user_name(username: string) {
     this.user_name.next(username);
@@ -50,9 +45,6 @@ export class ValidationService {
   }
 
   async validate(email:string, password:string) {
-    this.uploadForm = this.formBuilder.group({
-      profile: ['']
-    });
     const formData = new FormData();
     formData.append('email', email)
     formData.append('password', password)

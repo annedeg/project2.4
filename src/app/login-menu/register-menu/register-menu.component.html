@@ -1,16 +1,22 @@
-<div class="container">
-    <h1>IK BEN NIEUW!</h1>
-    
-    <label>Kies uw gebruikersnaam:</label>
-    <input type="text">
-    <label>Uw mailadres:</label>
-    <input type="text">
-    <label>Bevestig mailadres:</label>
-    <input type="text">
-    <label>Kies wachtwoord:</label>
-    <input type="text">
-    <label>Bevestig wachtwoord:</label>
-    <input type="text">
+<form>
+    <div class="container">
+        <h1>Registreer een account</h1>
+        <h1 style="color:red">{{message}}</h1>
 
-    <label class="button">Maak account aan</label>
-</div>
+        <label>E-Mail</label>
+        <input type="text" name="mail" placeholder="Uw e-mailadres" required>
+
+        <label>Gebruikersnaam</label>
+        <input type="text" name="username" placeholder="Uw gebruikersnaam" required>
+
+        <label>Wachtwoord</label>
+        <input type="password" name="password" placeholder="Uw wachtwoord" required>
+
+        <label>Herhaal Wachtwoord</label>
+        <input type="password" name="password" placeholder="Herhaal uw wachtwoord" required>
+        <div class="buttons">
+            <label class="button" (click)="register()">Registreer</label>
+            <label class="link" (click)="login()">Ik heb al een account</label>
+        </div>
+    </div>
+</form>

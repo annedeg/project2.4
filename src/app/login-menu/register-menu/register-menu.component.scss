@@ -6,7 +6,7 @@ h1 {
     color: gray;
 }
 
-input[type=text], select, textarea {
+input, select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -23,15 +23,28 @@ input[type=text], select, textarea {
     background-color: #f2f2f2;
     padding: 20px;
     text-align: center;
+    margin: auto;
 }
 
-.button {
-    border-radius: 5px;
-    background-color: #5dbe54;
-    padding: 10px;
-}
+.buttons {
 
-.button:hover {
-    background-color: #b9eeb5;
-    padding: 8px;
+    margin-top: 20px;
+
+    .link {
+        color: blue;
+        text-decoration: underline;
+    }
+
+    .button {
+        border-radius: 5px;
+        background-color: #5dbe54;
+        padding: 8px;
+        margin: 8px;
+
+    }
+
+    .button:hover {
+        background-color: #b9eeb5;
+        padding: 8px;
+    }
 }

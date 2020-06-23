@@ -43,10 +43,15 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit(): void {
         this.loginName = "";
-
+        if(this.loginName === null || this.loginName === undefined || this.loginName === '') {
+            this.loginName = localStorage.getItem("username");
+        }
         console.log(this.loginName);
     }
 
+    home():void {
+        this.router.navigate(['homepage']);
+    }
 
     // checkName() {
     //   if(localStorage.getItem('username')) {

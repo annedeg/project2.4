@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {ValidationService} from "../../validation.service";
 
 @Component({
   selector: 'app-settings-page',
@@ -8,26 +9,20 @@ import { Router } from '@angular/router';
 })
 
 export class SettingsPageComponent implements OnInit {
-  usernameEdit : boolean = false;
+  username;
   deleteConfirmation : boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private val: ValidationService) {
+    this.val.username_public.subscribe((username) => {
+      this.username = username;
+    });
+  }
 
   ngOnInit(): void {
+    this.username = localStorage.getItem('username');
   }
 
-  usernameEditToggle() {
-    if (this.usernameEdit) {
-      this.usernameEdit = false;
-    } else {
-      this.usernameEdit = true;
-    }
-  }
 
-  editUsername() {
-    //TODO actually change the username if it's available
-    this.usernameEditToggle();
-  }
 
   deleteConfirmToggle() {
     if (this.deleteConfirmation) {

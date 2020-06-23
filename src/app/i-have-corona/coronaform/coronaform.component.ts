@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
+import {ValidationService} from "../../validation.service";
 
 @Component({
   selector: 'coronaform',
@@ -25,7 +26,7 @@ export class CoronaFormComponent implements OnInit {
   lowSymptoms : number = 3; //arbitrary number of a low symptom count
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private val: ValidationService) { }
 
   ngOnInit(): void {
   }
@@ -53,19 +54,30 @@ export class CoronaFormComponent implements OnInit {
     }
   }
 
-  confirmPassword(pass : String) {
+  confirmPassword(pass : string) {
     if (pass.length == 0) {
       //Do nothing
     }
     else {
-      if (pass === 'defaultPassword') { //todo link up to the DB so we can check with an actual password rather that this default
-        this.passwordPage = false;
-        this.wrongPassword = false;
-        this.coronaConfirmedPage = true;
-      }
-      else {
-        this.wrongPassword = true;
-      }
+      let formData = new FormData();
+      formData.append('email', localStorage.getItem('email'));
+      formData.append('password', pass);
+      this.val.doPostApiCall('/login', formData, null).then((data) => {
+          //password is correct
+          this.passwordPage = false;
+          this.wrongPassword = false;
+          this.coronaConfirmedPage = true;
+
+          //TODO send everyone i have seen in two weeks a notification.
+
+
+          // let coronaFormData = new FormData();
+          // coronaFormData.append('', )
+          // this.val.doPostApiCall()
+
+      }, (error) => {
+          this.wrongPassword = true;
+      });
     }
   }
 
