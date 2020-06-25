@@ -62,7 +62,7 @@ export class CoronaFormComponent implements OnInit {
       let formData = new FormData();
       formData.append('email', localStorage.getItem('email'));
       formData.append('password', pass);
-      this.val.doPostApiCall('/login', formData, null).then((data) => {
+      this.val.doPostApiCall('/user/login', formData, null).then((data) => {
           //password is correct
           this.passwordPage = false;
           this.wrongPassword = false;

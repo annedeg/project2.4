@@ -13,14 +13,14 @@ export class ValidationGuardService implements CanActivate {
     canActivate(): boolean {
         if (localStorage.getItem('token') !== null) {
             var works: boolean;
-            this.validation.doGetApiCall('/auth', localStorage.getItem('token')).then(
+            this.validation.doGetApiCall('/user_id', localStorage.getItem('token')).then(
                 () => {
                     works = true;
                 }, () => {
                     this.router.navigateByUrl('/login');
                     works = false;
                 }
-            );
+            )
             return true;
         }
         return false;

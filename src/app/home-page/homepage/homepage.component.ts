@@ -25,8 +25,7 @@ export class HomepageComponent implements OnInit {
             }, (error) => {
                 let error_2: HttpErrorResponse = error;
                 if (error_2.status === 401) {
-                    //token expired
-                    this.router.navigate(['login']);
+                    //token expired 
                 }
             });
     }

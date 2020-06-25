@@ -49,14 +49,14 @@ export class ValidationService {
     formData.append('email', email)
     formData.append('password', password)
 
-    return await this.doPostApiCall("/login", formData, null)
+    return await this.doPostApiCall("/user/login", formData, null)
 
   }
 
   async setSession(response: Token) {
     console.log("fully started bro")
     localStorage.setItem('token', response.access_token)
-    await this.doGetApiCall('/auth', localStorage.getItem('token'))
+    await this.doGetApiCall('/user_id', localStorage.getItem('token'))
         .then(
             function(data) {
               let user_id_let: Auth = <Auth> data;
