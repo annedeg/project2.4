@@ -12,10 +12,12 @@ import { HttpClientModule } from '@angular/common/http';
 import {SettingsModule} from "./settings/settings.module";
 import {MatBadgeModule} from "@angular/material/badge";
 import {HomePageModule} from "./home-page/home-page.module";
+import { NickPageComponent } from './nick-page/nick-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NickPageComponent,
   ],
   imports: [
     CommonModule,

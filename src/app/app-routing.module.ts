@@ -14,6 +14,7 @@ import { ChangePasswordComponent } from './settings/change-password/change-passw
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginMenuModule} from "./login-menu/login-menu.module";
 import {RegisterMenuComponent} from "./login-menu/register-menu/register-menu.component";
+import { NickPageComponent } from './nick-page/nick-page.component';
 const routes: Routes = [
   {
     path: '',
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'coronaform', component: CoronaFormComponent, canActivate: [ValidationGuardService] },
   { path: 'register', component: RegisterMenuComponent},
   { path: 'settings', component: SettingsPageComponent, canActivate: [ValidationGuardService]},
-  { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate: [ValidationGuardService]}
+  { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate: [ValidationGuardService]},
+  { path: 'nick', component: NickPageComponent, canActivate: [ValidationGuardService]}
 ]
  
 @NgModule({
