@@ -22,7 +22,7 @@ export class ChangePasswordComponent implements OnInit {
 
   async changePassword() {
     if(this.newPassword2 === this.newPassword && this.newPassword !== null && this.oldPassword !== "" && this.newPassword !== this.oldPassword) {
-      await this.validationService.doGetApiCall("/auth", localStorage.getItem('token'))
+      await this.validationService.doGetApiCall("/user_id", localStorage.getItem('token'))
       .then((data) => {
         this.user_id = (Object.values(data)[0][0][0]);
       })
