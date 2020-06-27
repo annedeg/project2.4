@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate: [ValidationGuardService]},
   { path: 'nick', component: NickPageComponent, canActivate: [ValidationGuardService]}
 ]
- 
+
 @NgModule({
   declarations: [],
   imports: [

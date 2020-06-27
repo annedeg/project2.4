@@ -1,4 +1,25 @@
+<div>{{notifications}}</div>
 <div *ngFor="let notification of notifications">
-  {{notification}}</div>
+  <div ngSwitch="{{notification[1]}}" >
+    <p *ngSwitchCase="0" (click)="showNotification(notification[4], 0, notification[2])">
+      <b>Oh fuck je hebt big rona</b></p>
+    <p *ngSwitchCase="1" (click)="showNotification(notification[4], 1, notification[2])">
+      <b>Oh fuck je hebt een contactmoment</b></p>
+    <p *ngSwitchCase="2" (click)="showNotification(notification[4], 2, notification[2])">
+      <b>Oh fuck je hebt een kamergenoot</b></p>
+  </div>
+<!--  <p>received: {{notification[2]}}</p>-->
+<!--  <p *ngIf="notification[0]"></p>-->
+<!--  <p>{{notification}}</p>-->
+<!--  <p>hallo?</p>-->
+</div>
+<div>
+  <p>{{received}}</p>
+  <p>{{notificationMessage}}</p>
+  <div *ngIf="confirmationButtons">
+    <button>Bevestigen</button>
+    <button>Wie?</button>
+  </div>
+</div>
 
 
