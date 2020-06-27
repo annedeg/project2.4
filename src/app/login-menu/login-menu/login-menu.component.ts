@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { ValidationService } from 'src/app/validation.service';
+import { rejects } from 'assert';
 
 
 @Component({
@@ -31,12 +32,10 @@ export class LoginMenuComponent implements OnInit {
     .then(() => {
       if(this.token.access_token == undefined) {
         this.message = "Gegevens incorrect"
-      } else {
-        this.validationService.setSession(this.token)
-        this.router.navigate(['homepage'])
+      } else {  
+        let result = this.validationService.setSession(this.token)
       }
     })
-    .finally(() => this.router.navigate(['homepage']))
 
   }
 }

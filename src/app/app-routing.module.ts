@@ -14,6 +14,10 @@ import { ChangePasswordComponent } from './settings/change-password/change-passw
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginMenuModule} from "./login-menu/login-menu.module";
 import {RegisterMenuComponent} from "./login-menu/register-menu/register-menu.component";
+import { RoommateComponent } from './add-roommate/roommate/roommate.component';
+import { RoommateOverviewComponent } from './add-roommate/roommate-overview/roommate-overview.component';
+import { ContactOverviewComponent } from './add-contact/contact-overview/contact-overview.component';
+import { AddContactModule } from './add-contact/add-contact.module';
 const routes: Routes = [
   {
     path: '',
@@ -27,7 +31,12 @@ const routes: Routes = [
   { path: 'coronaform', component: CoronaFormComponent, canActivate: [ValidationGuardService] },
   { path: 'register', component: RegisterMenuComponent},
   { path: 'settings', component: SettingsPageComponent, canActivate: [ValidationGuardService]},
-  { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate: [ValidationGuardService]}
+  { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate: [ValidationGuardService]},
+  { path: 'roommates', component: RoommateOverviewComponent, canActivate: [ValidationGuardService]},
+  { path: 'roommates/add', component: RoommateComponent, canActivate: [ValidationGuardService]},
+  { path: 'contacts', component: ContactOverviewComponent, canActivate: [ValidationGuardService]},
+  { path: 'contacts/add', component: AddContactModule, canActivate: [ValidationGuardService]},
+  
 ]
  
 @NgModule({

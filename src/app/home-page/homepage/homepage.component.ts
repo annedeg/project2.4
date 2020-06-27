@@ -13,24 +13,28 @@ export class HomepageComponent implements OnInit {
 
     constructor(private validationService: ValidationService, private router: Router) {
     }
+    percentage = 100;
 
     ngOnInit(): void {
         this.validationService.doGetApiCall('/notifications/' + localStorage.getItem('user_id'), localStorage.getItem('token'))
             .then((data) => {
-                let notifactions: Object[] = <any[]> data;
-                let amountOfNotifications = notifactions.length;
-                for(let i = 0; i < amountOfNotifications; i++) {
-                    console.log(notifactions[i][0]);
-                }
             }, (error) => {
                 let error_2: HttpErrorResponse = error;
                 if (error_2.status === 401) {
                     //token expired 
                 }
-            });
+            })
     }
 
     btnClick = function () {
         this.router.navigateByUrl('/coronaform');
     };
+
+    roommates() {
+        this.router.navigate(['roommates']);
+    }
+
+    contactmoments() {
+        this.router.navigate(['contacts'])
+    }
 }

@@ -17,6 +17,7 @@ export class ValidationGuardService implements CanActivate {
                 () => {
                     works = true;
                 }, () => {
+                    localStorage.clear();
                     this.router.navigateByUrl('/login');
                     works = false;
                 }

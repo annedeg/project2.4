@@ -1,0 +1,13 @@
+<form>
+    <div class="container">
+        <h1>Add roommate</h1>
+        <h1 style="color:red">{{message}}</h1>
+
+        <label>Roommate ID</label>
+        <input type="text" name="mail" [(ngModel)]="id" placeholder="Roommate id" required>
+
+        <div class="buttons">
+            <label class="button" (click)="toevoegen()">Toevoegen</label>
+        </div>
+    </div>
+</form>

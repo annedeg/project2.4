@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {SettingsModule} from "./settings/settings.module";
 import {MatBadgeModule} from "@angular/material/badge";
 import {HomePageModule} from "./home-page/home-page.module";
+import { AddRoommateModule } from './add-roommate/add-roommate.module';
+import { AddContactModule } from './add-contact/add-contact.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import {HomePageModule} from "./home-page/home-page.module";
     IHaveCoronaModule,
     HttpClientModule,
       SettingsModule,
-      HomePageModule
+      HomePageModule,
+      AddRoommateModule,
+      AddContactModule,
   ],
   exports: [RouterModule,
     MatBadgeModule],
