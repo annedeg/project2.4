@@ -12,8 +12,9 @@ export class NickPageComponent implements OnInit {
   notificationMessage = ""
   received = ""
   confirmationButtons = false
+  roommate = ""
 
-  allNotifications = [
+  allNotifications = [ //mock data
     [5, 1, "Wed, 17 Jun 2020 15:42:00 GMT", 7, 6, 0],
     [6, 2, "Wed, 24 Jun 2020 20:31:08 GMT", 7, 6, 0],
     [7, 2, "Wed, 24 Jun 2020 21:53:29 GMT", 7, 6, 0],
@@ -51,8 +52,10 @@ export class NickPageComponent implements OnInit {
 
   }//I'm gonna leave this up here as an exampalel while I work
 // sender = data[1] TODO fix the api call
-  showNotification(sender, type, received) {
+  showNotification(sender, type, received, notificationID) {
     this.received = "Ontvangen om " + received
+    this.roommate = sender
+    this.readNotification(notificationID)
     switch (type) {
       case 0:
         this.notificationMessage = "U bent in contact gekomen met gebruiker " + sender + ", en deze gebruiker heeft " +
@@ -65,7 +68,7 @@ export class NickPageComponent implements OnInit {
         this.confirmationButtons = false
         break;
       case 2:
-        this.notificationMessage = "Gebruiker " + sender + " heeft aangegeven uw huisgenoot te zijn. Kut u hieronder " +
+        this.notificationMessage = "Gebruiker " + this.roommate + " heeft aangegeven uw huisgenoot te zijn. Kunt u hieronder " +
           "aangeven of dit klopt?"
         this.confirmationButtons = true
     }
@@ -77,8 +80,19 @@ export class NickPageComponent implements OnInit {
     this.confirmationButtons = false
   }
 
+  confirmRoommate() {
+    let roommateMail = null //TODO how the fuck do I get the roommate mail without an api call? I have the roommate id tho
+    this.service.doPostApiCall("/roommates" + localStorage.getItem('user_id'), roommateMail,
+      localStorage.getItem('token'))
+      .then(() => this.notificationMessage = "Kamergenoot bevestigd", (err) => console.log(err))
+  }
+
+  denyRoommate() { //TODO something in the lines of a notification type 4 maybe?
+    this.notificationMessage = "Ok. Wij zullen een notificatie sturen naar de aanvrager."
+  }
+
   readNotification(notification_id) { //TODO make a patch api call thing
-    this.service.doPostApiCall("/notification" + localStorage.getItem(notification_id),
+    this.service.doPatchApiCall("/notification" + localStorage.getItem(notification_id),
       null, localStorage.getItem('token'))
   }
 

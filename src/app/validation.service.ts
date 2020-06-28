@@ -38,9 +38,17 @@ export class ValidationService {
 
   doPutApiCall(url:string, formData:FormData, authorization:string) {
     if(authorization == null) {
-      return this.http.put(API_URL+url+"?jwt="+authorization, formData).toPromise();
+      return this.http.put(API_URL+url+"?jwt="+authorization, formData).toPromise(); //TODO klopt deze?
     } else {
       return this.http.put(API_URL+url+"?jwt="+authorization, formData).toPromise();
+    }
+  }
+
+  doPatchApiCall(url:string, formData:FormData, authorization:string) {
+    if(authorization == null) {
+      return this.http.patch(API_URL+url, formData).toPromise();
+    } else {
+      return this.http.patch(API_URL+url+"?jwt="+authorization, formData).toPromise();
     }
   }
 

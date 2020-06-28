@@ -1,24 +1,25 @@
-<div>{{notifications}}</div>
 <div *ngFor="let notification of notifications">
   <div ngSwitch="{{notification[1]}}" >
-    <p *ngSwitchCase="0" (click)="showNotification(notification[4], 0, notification[2])">
-      <b>Oh fuck je hebt big rona</b></p>
-    <p *ngSwitchCase="1" (click)="showNotification(notification[4], 1, notification[2])">
-      <b>Oh fuck je hebt een contactmoment</b></p>
-    <p *ngSwitchCase="2" (click)="showNotification(notification[4], 2, notification[2])">
-      <b>Oh fuck je hebt een kamergenoot</b></p>
+    <div *ngSwitchCase="0" (click)="showNotification(notification[5], 0, notification[2], notification[2])">
+      <p *ngIf="notification[0]"><b>U bent waarschijnlijk besmet met het Corona virus!</b></p>
+      <p *ngIf="!notification[0]">U bent waarschijnlijk besmet met het Corona virus!</p>
+    </div>
+    <div *ngSwitchCase="1" (click)="showNotification(notification[5], 1, notification[2], notification[2])">
+      <p *ngIf="notification[0]"><b>U heeft een nieuw contactmoment</b></p>
+      <p *ngIf="!notification[0]">U heeft een nieuw contactmoment</p>
+    </div>
+    <div *ngSwitchCase="2" (click)="showNotification(notification[5], 2, notification[2], notification[2])">
+      <p *ngIf="notification[0]"><b>U heeft een nieuwe huisgenoot aanvraag</b></p>
+      <p *ngIf="!notification[0]">U heeft een nieuwe huisgenoot aanvraag</p>
+    </div>
   </div>
-<!--  <p>received: {{notification[2]}}</p>-->
-<!--  <p *ngIf="notification[0]"></p>-->
-<!--  <p>{{notification}}</p>-->
-<!--  <p>hallo?</p>-->
 </div>
 <div>
   <p>{{received}}</p>
   <p>{{notificationMessage}}</p>
   <div *ngIf="confirmationButtons">
-    <button>Bevestigen</button>
-    <button>Wie?</button>
+    <button (click)="confirmRoommate()">Bevestigen</button>
+    <button (click)="denyRoommate()">Ik ken dit persoon niet</button>
   </div>
 </div>
 
