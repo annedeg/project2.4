@@ -1,6 +1,14 @@
-table {
-    margin-top: 16px;
-    border-collapse: collapse;
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    table {
+        margin: 16px;
+        border-collapse: collapse;
+        background-color: white;
+        
+    }
 }
 
 p {

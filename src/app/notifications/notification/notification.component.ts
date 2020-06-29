@@ -27,8 +27,11 @@ export class NotificationComponent implements OnInit {
     formData.append("new password", "d")
 
     this.service.doGetApiCall("/notifications/" + localStorage.getItem('user_id'), localStorage.getItem('token'))
-      .then((data) => {
+      .then((data) => { 
+          let dingen: String = data.toString();
+  
           this.allNotifications.push(data)
+          
         console.log(this.allNotifications)
         },
 

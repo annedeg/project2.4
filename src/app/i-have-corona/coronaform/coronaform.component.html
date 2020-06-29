@@ -30,7 +30,7 @@
   <p>Vul alsjeblieft je wachtwoord in om je besmetting te bevestigen.</p>
   <p *ngIf="wrongPassword">Wachtwoord onjuist, probeer alsjeblieft opnieuw.</p>
   <form>
-    <input type = password #password><br>
+    <input type = password #password>
     <button  class="mat-focus-indicator mat-flat-button mat-button-base"  type = button (click)="confirmPassword(password.value)">Bevestigen</button>
   </form>
 </div>

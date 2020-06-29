@@ -31,15 +31,25 @@ export class ChangePasswordComponent implements OnInit {
         formData.append('password', this.oldPassword)
         formData.append('new password', this.newPassword)
         await this.validationService.doPutApiCall("/user/" + this.user_id, formData, localStorage.getItem('token'))
-        .then((data)=>console.log(data))
-      }).finally(() => {
-        this.message = "Wachtwoord veranderd!"
-      });
-
+        .then((data)=> {
+          console.log(data)
+          let newData: PasswordChange =  <PasswordChange> data;
+          if(newData.Success.toString().includes("succesfully changed")) {
+            this.message = "Wachtwoord veranderd"
+          } else {
+            this.message = "Incorrecte gegevens, probeer het opnieuw"
+          }
+        }, (err)=>this.message = "Incorrecte gegevens, probeer het opnieuw")
+      })
       //this.validationService.doPutApiCall("/user/")
     } else {
-      this.message = "Incorrecte gegevens, probeer het opnieuw"
+      this.message = "Wachtwoorden niet hetzelfde"
     }
 
   }
+}
+
+
+interface PasswordChange {
+  Success:string
 }

@@ -11,7 +11,6 @@ export class ValidationService {
   user_id;
   private user_name = new BehaviorSubject('');
   usernameChange: Subject<string> = new Subject<string>();
-
   username_public = this.user_name.asObservable();
 
   public success: boolean = true;
@@ -76,7 +75,6 @@ export class ValidationService {
               .then(
                   function(data) {
                     let user: User = <User> data;
-                    console.log(user)
                     localStorage.setItem('username', user[0]);
                     localStorage.setItem('email', user[1]);
                   }
