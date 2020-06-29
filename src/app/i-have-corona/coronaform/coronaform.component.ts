@@ -68,9 +68,6 @@ export class CoronaFormComponent implements OnInit {
         this.wrongPassword = false;
         this.coronaConfirmedPage = true;
 
-        //TODO send everyone i have seen in two weeks a notification.
-
-        let now = new Date().getSeconds()
         let allNotifications = []
         let roommates = []
         this.service.doGetApiCall("/notifications/" + localStorage.getItem('user_id'), localStorage
@@ -84,8 +81,8 @@ export class CoronaFormComponent implements OnInit {
           ).then(async () => {
           let contactUsers = []
           let roommateUsers = []
-          allNotifications[0].forEach(user => contactUsers.push(user[4]))
-          roommates[0].forEach(user => roommateUsers.push(user[2]))
+          allNotifications[0].forEach(notificationUser => contactUsers.push(notificationUser[4]))
+          roommates[0].forEach(roommateUser => roommateUsers.push(roommateUser[2]))
 
           await contactUsers.forEach(value => {
             let formData = new FormData()
@@ -95,14 +92,14 @@ export class CoronaFormComponent implements OnInit {
             this.service.doPostApiCall("/notifications/" + localStorage.getItem('user_id'), formData,
               localStorage.getItem('token')).then(() => console.log('success'), (err) => console.log(err))
           })
-          await roommates.forEach(value => {
-            let formData = new FormData()
-            formData.append('admin password', 'superSecretPassword')
-            formData.append('notification type', `0`)
-            formData.append(`sendee`, value.toString())
-            this.service.doPostApiCall("/notifications/" + localStorage.getItem('user_id'), formData,
-              localStorage.getItem('token')).then(() => console.log('success'), (err) => console.log(err))
-        })
+        //   await roommates.forEach(value => {
+        //     let formData = new FormData()
+        //     formData.append('admin password', 'superSecretPassword')
+        //     formData.append('notification type', `0`)
+        //     formData.append(`sendee`, value.toString())
+        //     this.service.doPostApiCall("/notifications/" + localStorage.getItem('user_id'), formData,
+        //       localStorage.getItem('token')).then(() => console.log('success'), (err) => console.log(err))
+        // })
       })}, (error) => {
           this.wrongPassword = true;
       })
