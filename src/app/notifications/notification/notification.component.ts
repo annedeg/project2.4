@@ -65,7 +65,7 @@ export class NotificationComponent implements OnInit {
     }
   }
 
-  hideNotification() { //TODO use this
+  hideNotification() {
     this.notificationMessage = ""
     this.received = ""
     this.confirmationButtons = false
@@ -76,7 +76,10 @@ export class NotificationComponent implements OnInit {
     formData.append("roommate", this.roommateID.toString())
     this.service.doPostApiCall("/roommates/" + localStorage.getItem('user_id'), formData,
       localStorage.getItem('token'))
-      .then(() => this.notificationMessage = "Kamergenoot bevestigd", (err) => console.log(err))
+      .then(() => {
+        this.notificationMessage = "Kamergenoot bevestigd"
+        this.confirmationButtons = false
+      }, (err) => console.log(err))
   }
 
   denyRoommate() { //TODO something in the lines of a notification type 4 maybe?

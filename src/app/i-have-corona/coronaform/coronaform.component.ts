@@ -81,21 +81,23 @@ export class CoronaFormComponent implements OnInit {
             .getItem('token')).then((data) => {
               roommates.push(data)
             })
-          ).then(() => {
+          ).then(async () => {
           let contactUsers = []
           let roommateUsers = []
-          allNotifications[0].forEach(user => contactUsers.push(user[3]))
+          allNotifications[0].forEach(user => contactUsers.push(user[4]))
           roommates[0].forEach(user => roommateUsers.push(user[2]))
 
-          contactUsers.forEach(value => {
+          await contactUsers.forEach(value => {
             let formData = new FormData()
+            formData.append('admin password', 'superSecretPassword')
             formData.append('notification type', `0`)
             formData.append(`sendee`, value.toString())
             this.service.doPostApiCall("/notifications/" + localStorage.getItem('user_id'), formData,
               localStorage.getItem('token')).then(() => console.log('success'), (err) => console.log(err))
           })
-          roommates.forEach(value => {
+          await roommates.forEach(value => {
             let formData = new FormData()
+            formData.append('admin password', 'superSecretPassword')
             formData.append('notification type', `0`)
             formData.append(`sendee`, value.toString())
             this.service.doPostApiCall("/notifications/" + localStorage.getItem('user_id'), formData,
