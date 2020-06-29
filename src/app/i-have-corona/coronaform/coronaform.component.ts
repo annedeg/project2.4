@@ -26,7 +26,7 @@ export class CoronaFormComponent implements OnInit {
   lowSymptoms : number = 3; //arbitrary number of a low symptom count
 
 
-  constructor(private router: Router, private val: ValidationService) { }
+  constructor(private router: Router, private service: ValidationService) { }
 
   ngOnInit(): void {
   }
@@ -62,18 +62,34 @@ export class CoronaFormComponent implements OnInit {
       let formData = new FormData();
       formData.append('email', localStorage.getItem('email'));
       formData.append('password', pass);
-      this.val.doPostApiCall('/user/login', formData, null).then((data) => {
-          //password is correct
-          this.passwordPage = false;
-          this.wrongPassword = false;
-          this.coronaConfirmedPage = true;
+      this.service.doPostApiCall('/user/login', formData, null).then((data) => {
+        //password is correct
+        this.passwordPage = false;
+        this.wrongPassword = false;
+        this.coronaConfirmedPage = true;
 
-          //TODO send everyone i have seen in two weeks a notification.
+        //TODO send everyone i have seen in two weeks a notification.
+
+        let today = new Date()
+        let allNotifications = []
+        let notifications = []
+        this.service.doGetApiCall("/notifications/" + localStorage.getItem('user_id'), localStorage
+          .getItem('token'))
+        .then((data) => {
+          allNotifications.push(data)
+            console.log(allNotifications)
+          },
+
+          (err) => console.log(err)
+        );
+
+        allNotifications.forEach(element => notifications.push(element))
+        notifications.forEach(element => console.log(element))
 
 
-          // let coronaFormData = new FormData();
-          // coronaFormData.append('', )
-          // this.val.doPostApiCall()
+        // let coronaFormData = new FormData();
+        // coronaFormData.append('', )
+        // this.val.doPostApiCall()
 
       }, (error) => {
           this.wrongPassword = true;
