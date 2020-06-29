@@ -1,3 +1,4 @@
+<p *ngIf="!allNotifications[0]">No notifications found</p>
 <div *ngFor="let notifications of allNotifications">
     <div *ngFor ="let notification of notifications">
       <div ngSwitch="{{notification[2]}}" >

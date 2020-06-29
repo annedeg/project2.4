@@ -37,4 +37,8 @@ export class HomepageComponent implements OnInit {
     contactmoments() {
         this.router.navigate(['contacts'])
     }
+
+    notifications() {
+        this.router.navigate(['notifications'])
+    }
 }

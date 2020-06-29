@@ -1,0 +1,19 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .awnsers {
+        margin: 8px;
+        
+        button {
+            margin: 0 8px;
+        }
+    }
+
+    form {
+        input[type=password] {
+            height: 29px;
+        }
+    }
+}
