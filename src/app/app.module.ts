@@ -15,6 +15,8 @@ import {HomePageModule} from "./home-page/home-page.module";
 import { AddRoommateModule } from './add-roommate/add-roommate.module';
 import { AddContactModule } from './add-contact/add-contact.module';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
       HomePageModule,
       AddRoommateModule,
       AddContactModule,
+      ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   exports: [RouterModule,
     MatBadgeModule],
