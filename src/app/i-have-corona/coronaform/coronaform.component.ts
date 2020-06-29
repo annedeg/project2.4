@@ -70,30 +70,40 @@ export class CoronaFormComponent implements OnInit {
 
         //TODO send everyone i have seen in two weeks a notification.
 
-        let today = new Date()
+        let now = new Date().getSeconds()
         let allNotifications = []
-        let notifications = []
+        let roommates = []
         this.service.doGetApiCall("/notifications/" + localStorage.getItem('user_id'), localStorage
-          .getItem('token'))
-        .then((data) => {
-          allNotifications.push(data)
-            console.log(allNotifications)
-          },
+          .getItem('token')).then((data) => {
+            allNotifications.push(data)
+          }, (err) => console.log(err)
+        ).then(() => this.service.doGetApiCall("/roommates/" + localStorage.getItem('user_id'), localStorage
+            .getItem('token')).then((data) => {
+              roommates.push(data)
+            })
+          ).then(() => {
+          let contactUsers = []
+          let roommateUsers = []
+          allNotifications[0].forEach(user => contactUsers.push(user[3]))
+          roommates[0].forEach(user => roommateUsers.push(user[2]))
 
-          (err) => console.log(err)
-        );
-
-        allNotifications.forEach(element => notifications.push(element))
-        notifications.forEach(element => console.log(element))
-
-
-        // let coronaFormData = new FormData();
-        // coronaFormData.append('', )
-        // this.val.doPostApiCall()
-
-      }, (error) => {
+          contactUsers.forEach(value => {
+            let formData = new FormData()
+            formData.append('notification type', `0`)
+            formData.append(`sendee`, value.toString())
+            this.service.doPostApiCall("/notifications/" + localStorage.getItem('user_id'), formData,
+              localStorage.getItem('token')).then(() => console.log('success'), (err) => console.log(err))
+          })
+          roommates.forEach(value => {
+            let formData = new FormData()
+            formData.append('notification type', `0`)
+            formData.append(`sendee`, value.toString())
+            this.service.doPostApiCall("/notifications/" + localStorage.getItem('user_id'), formData,
+              localStorage.getItem('token')).then(() => console.log('success'), (err) => console.log(err))
+        })
+      })}, (error) => {
           this.wrongPassword = true;
-      });
+      })
     }
   }
 
