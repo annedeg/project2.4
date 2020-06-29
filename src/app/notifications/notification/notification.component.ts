@@ -29,7 +29,6 @@ export class NotificationComponent implements OnInit {
     this.service.doGetApiCall("/notifications/" + localStorage.getItem('user_id'), localStorage.getItem('token'))
       .then((data) => {
           this.allNotifications.push(data)
-        console.log(this.allNotifications)
         },
 
         (err) => console.log(err)
@@ -73,7 +72,6 @@ export class NotificationComponent implements OnInit {
   }
 
   confirmRoommate() {
-    console.log(this.roommateID)
     let formData = new FormData()
     formData.append("roommate", this.roommateID.toString())
     this.service.doPostApiCall("/roommates/" + localStorage.getItem('user_id'), formData,

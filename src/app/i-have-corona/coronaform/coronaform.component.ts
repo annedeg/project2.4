@@ -26,7 +26,7 @@ export class CoronaFormComponent implements OnInit {
   lowSymptoms : number = 3; //arbitrary number of a low symptom count
 
 
-  constructor(private router: Router, private val: ValidationService) { }
+  constructor(private router: Router, private service: ValidationService) { }
 
   ngOnInit(): void {
   }
@@ -62,22 +62,48 @@ export class CoronaFormComponent implements OnInit {
       let formData = new FormData();
       formData.append('email', localStorage.getItem('email'));
       formData.append('password', pass);
-      this.val.doPostApiCall('/user/login', formData, null).then((data) => {
-          //password is correct
-          this.passwordPage = false;
-          this.wrongPassword = false;
-          this.coronaConfirmedPage = true;
+      this.service.doPostApiCall('/user/login', formData, null).then((data) => {
+        //password is correct
+        this.passwordPage = false;
+        this.wrongPassword = false;
+        this.coronaConfirmedPage = true;
 
-          //TODO send everyone i have seen in two weeks a notification.
+        //TODO send everyone i have seen in two weeks a notification.
 
+        let now = new Date().getSeconds()
+        let allNotifications = []
+        let roommates = []
+        this.service.doGetApiCall("/notifications/" + localStorage.getItem('user_id'), localStorage
+          .getItem('token')).then((data) => {
+            allNotifications.push(data)
+          }, (err) => console.log(err)
+        ).then(() => this.service.doGetApiCall("/roommates/" + localStorage.getItem('user_id'), localStorage
+            .getItem('token')).then((data) => {
+              roommates.push(data)
+            })
+          ).then(() => {
+          let contactUsers = []
+          let roommateUsers = []
+          allNotifications[0].forEach(user => contactUsers.push(user[3]))
+          roommates[0].forEach(user => roommateUsers.push(user[2]))
 
-          // let coronaFormData = new FormData();
-          // coronaFormData.append('', )
-          // this.val.doPostApiCall()
-
-      }, (error) => {
+          contactUsers.forEach(value => {
+            let formData = new FormData()
+            formData.append('notification type', `0`)
+            formData.append(`sendee`, value.toString())
+            this.service.doPostApiCall("/notifications/" + localStorage.getItem('user_id'), formData,
+              localStorage.getItem('token')).then(() => console.log('success'), (err) => console.log(err))
+          })
+          roommates.forEach(value => {
+            let formData = new FormData()
+            formData.append('notification type', `0`)
+            formData.append(`sendee`, value.toString())
+            this.service.doPostApiCall("/notifications/" + localStorage.getItem('user_id'), formData,
+              localStorage.getItem('token')).then(() => console.log('success'), (err) => console.log(err))
+        })
+      })}, (error) => {
           this.wrongPassword = true;
-      });
+      })
     }
   }
 
