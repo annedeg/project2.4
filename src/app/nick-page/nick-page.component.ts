@@ -19,6 +19,7 @@ export class NickPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.allNotifications = []
     let formData = new FormData();
 
     formData.append("password", "c")
@@ -86,8 +87,8 @@ export class NickPageComponent implements OnInit {
   readNotification(notification_id) {
     let formData = new FormData()
     formData.append("notification", notification_id.toString())
-    this.service.doPutApiCall("/notification/read", formData, localStorage.getItem('token'))
-      .then(() => console.log("notification gelezen"), (err) => console.log(err))
+    this.service.doPutApiCall("/notifications/read", formData, localStorage.getItem('token'))
+      .then(() => )
   }
 
 }
