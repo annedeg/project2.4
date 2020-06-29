@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterMenuComponent},
   { path: 'settings', component: SettingsPageComponent, canActivate: [ValidationGuardService]},
   { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate: [ValidationGuardService]},
-  { path: 'nick', component: NickPageComponent, canActivate: [ValidationGuardService]}
+  { path: 'nick', component: NickPageComponent, canActivate: [ValidationGuardService]},
   { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate: [ValidationGuardService]},
   { path: 'roommates', component: RoommateOverviewComponent, canActivate: [ValidationGuardService]},
   { path: 'roommates/add', component: RoommateComponent, canActivate: [ValidationGuardService]},

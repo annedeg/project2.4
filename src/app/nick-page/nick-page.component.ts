@@ -8,20 +8,11 @@ import {ValidationService} from '../validation.service';
 })
 export class NickPageComponent implements OnInit {
 
-  notifications = [] // gonna call this allNotifications later when I'm older
+  allNotifications = []
   notificationMessage = ""
   received = ""
   confirmationButtons = false
-  roommate = ""
-
-  allNotifications = [ //mock data
-    [5, 1, "Wed, 17 Jun 2020 15:42:00 GMT", 7, 6, 0],
-    [6, 2, "Wed, 24 Jun 2020 20:31:08 GMT", 7, 6, 0],
-    [7, 2, "Wed, 24 Jun 2020 21:53:29 GMT", 7, 6, 0],
-    [8, 0, "Wed, 24 Jun 2020 21:53:55 GMT", 7, 6, 0],
-    [9, 0, "Wed, 24 Jun 2020 21:56:01 GMT", 7, 6, 0],
-    [10, 1, "Wed, 24 Jun 2020 21:57:16 GMT", 7, 6, 0]
-  ];
+  roommateID = ""
 
 
   constructor(private service: ValidationService) {
@@ -35,26 +26,25 @@ export class NickPageComponent implements OnInit {
 
     this.service.doGetApiCall("/notifications/" + localStorage.getItem('user_id'), localStorage.getItem('token'))
       .then((data) => {
-          this.notifications.push(data)
-          this.service.doGetApiCall("/user/" + localStorage.getItem('user_id'),localStorage.getItem('token'))
-            .then((data) => console.log(data), (err) => console.log(err))
+          this.allNotifications.push(data)
+        console.log(this.allNotifications)
         },
 
         (err) => console.log(err)
       );
 
 
-    if (this.notifications.length != 0) {
-      //add some shit for "no notifications
+    if (this.allNotifications.length != 0) {
+      //add some shit for "no notifications"
     }
 
 
 
   }//I'm gonna leave this up here as an exampalel while I work
-// sender = data[1] TODO fix the api call
-  showNotification(sender, type, received, notificationID) {
+
+  showNotification(sender, type, received, notificationID, senderID) {
     this.received = "Ontvangen om " + received
-    this.roommate = sender
+    this.roommateID = senderID
     this.readNotification(notificationID)
     switch (type) {
       case 0:
@@ -68,8 +58,8 @@ export class NickPageComponent implements OnInit {
         this.confirmationButtons = false
         break;
       case 2:
-        this.notificationMessage = "Gebruiker " + this.roommate + " heeft aangegeven uw huisgenoot te zijn. Kunt u hieronder " +
-          "aangeven of dit klopt?"
+        this.notificationMessage = "Gebruiker " + sender + " heeft aangegeven uw huisgenoot te zijn. Kunt u " +
+          "hieronder aangeven of dit klopt?"
         this.confirmationButtons = true
     }
   }
@@ -81,8 +71,10 @@ export class NickPageComponent implements OnInit {
   }
 
   confirmRoommate() {
-    let roommateMail = null //TODO how the fuck do I get the roommate mail without an api call? I have the roommate id tho
-    this.service.doPostApiCall("/roommates" + localStorage.getItem('user_id'), roommateMail,
+    console.log(this.roommateID)
+    let formData = new FormData()
+    formData.append("roommate", this.roommateID.toString())
+    this.service.doPostApiCall("/roommates/" + localStorage.getItem('user_id'), formData,
       localStorage.getItem('token'))
       .then(() => this.notificationMessage = "Kamergenoot bevestigd", (err) => console.log(err))
   }
@@ -91,9 +83,11 @@ export class NickPageComponent implements OnInit {
     this.notificationMessage = "Ok. Wij zullen een notificatie sturen naar de aanvrager."
   }
 
-  readNotification(notification_id) { //TODO make a patch api call thing
-    this.service.doPatchApiCall("/notification" + localStorage.getItem(notification_id),
-      null, localStorage.getItem('token'))
+  readNotification(notification_id) {
+    let formData = new FormData()
+    formData.append("notification", notification_id.toString())
+    this.service.doPutApiCall("/notification/read", formData, localStorage.getItem('token'))
+      .then(() => console.log("notification gelezen"), (err) => console.log(err))
   }
 
 }

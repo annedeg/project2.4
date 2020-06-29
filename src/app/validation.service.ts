@@ -39,17 +39,17 @@ export class ValidationService {
 
   doPutApiCall(url:string, formData:FormData, authorization:string) {
     if(authorization == null) {
-      return this.http.put(API_URL+url+"?jwt="+authorization, formData).toPromise(); //TODO klopt deze?
+      return this.http.put(API_URL+url, formData).toPromise();
     } else {
       return this.http.put(API_URL+url+"?jwt="+authorization, formData).toPromise();
     }
   }
 
-  doPatchApiCall(url:string, formData:FormData, authorization:string) {
+  doPatchApiCall(url:string, authorization:string) {
     if(authorization == null) {
-      return this.http.patch(API_URL+url, formData).toPromise();
+      return this.http.patch(API_URL+url, "").toPromise();
     } else {
-      return this.http.patch(API_URL+url+"?jwt="+authorization, formData).toPromise();
+      return this.http.patch(API_URL+url+"?jwt="+authorization, "").toPromise();
     }
   }
 
@@ -71,7 +71,7 @@ export class ValidationService {
               let user_id_let: Auth = <Auth> data;
               localStorage.setItem('user_id', String(user_id_let.Identity[0][0]));
             }
-        ).then(() => {       
+        ).then(() => {
             this.doGetApiCall('/user/'+localStorage.getItem('user_id'), localStorage.getItem('token'))
               .then(
                   function(data) {

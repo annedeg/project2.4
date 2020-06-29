@@ -1,16 +1,21 @@
-<div *ngFor="let notification of notifications">
-  <div ngSwitch="{{notification[1]}}" >
-    <div *ngSwitchCase="0" (click)="showNotification(notification[5], 0, notification[2], notification[2])">
-      <p *ngIf="notification[0]"><b>U bent waarschijnlijk besmet met het Corona virus!</b></p>
-      <p *ngIf="!notification[0]">U bent waarschijnlijk besmet met het Corona virus!</p>
-    </div>
-    <div *ngSwitchCase="1" (click)="showNotification(notification[5], 1, notification[2], notification[2])">
-      <p *ngIf="notification[0]"><b>U heeft een nieuw contactmoment</b></p>
-      <p *ngIf="!notification[0]">U heeft een nieuw contactmoment</p>
-    </div>
-    <div *ngSwitchCase="2" (click)="showNotification(notification[5], 2, notification[2], notification[2])">
-      <p *ngIf="notification[0]"><b>U heeft een nieuwe huisgenoot aanvraag</b></p>
-      <p *ngIf="!notification[0]">U heeft een nieuwe huisgenoot aanvraag</p>
+<div *ngFor="let notifications of allNotifications">
+  <div *ngFor ="let notification of notifications">
+    <div ngSwitch="{{notification[2]}}" >
+      <div *ngSwitchCase="0" (click)="showNotification(notification[6], 0, notification[3], notification[1],
+      notification[5])">
+        <p *ngIf="!notification[0]"><b>U bent waarschijnlijk besmet met het Corona virus!</b></p>
+        <p *ngIf="notification[0]">U bent waarschijnlijk besmet met het Corona virus!</p>
+      </div>
+      <div *ngSwitchCase="1" (click)="showNotification(notification[6], 1, notification[3], notification[1],
+      notification[5])">
+        <p *ngIf="!notification[0]"><b>U heeft een nieuw contactmoment</b></p>
+        <p *ngIf="notification[0]">U heeft een nieuw contactmoment</p>
+      </div>
+      <div *ngSwitchCase="2" (click)="showNotification(notification[6], 2, notification[3], notification[1],
+       notification[5])">
+        <p *ngIf="!notification[0]"><b>U heeft een nieuwe huisgenoot aanvraag</b></p>
+        <p *ngIf="notification[0]">U heeft een nieuwe huisgenoot aanvraag</p>
+      </div>
     </div>
   </div>
 </div>
