@@ -88,7 +88,7 @@ export class NickPageComponent implements OnInit {
     let formData = new FormData()
     formData.append("notification", notification_id.toString())
     this.service.doPutApiCall("/notifications/read", formData, localStorage.getItem('token'))
-      .then(() => )
+      .then(() => this.ngOnInit())
   }
 
 }
