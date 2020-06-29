@@ -3,14 +3,14 @@
         <div class="meldingen"> <button class="mat-flat-button" matBadge="5" matBadgePosition="before" matBadgeColor="warn" matBadgeSize="medium">Meldingen</button></div>
         <div class = "coronapng">
             <img src="/assets/Corona.png" height="200px" width="200px">
-        <div class="coronascore">0%</div>
+        <div class="coronascore">{{percentage}}%</div>
         </div>
     </div>
     
     <div class="Personal details"></div>
     <div class="container">
         <button class="mat-flat-button" (click)="btnClick();">Ik heb Corona</button>
-        <button class="mat-flat-button" color="primary">Overzicht contactmomenten</button>
-        <button class="mat-flat-button" color="primary">Overzicht huisgenoten</button>
+        <button class="mat-flat-button" (click)="contactmoments();" color="primary">Overzicht contactmomenten</button>
+        <button class="mat-flat-button" (click)="roommates();" color="primary">Overzicht huisgenoten</button>
     </div>
 </div>

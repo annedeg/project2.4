@@ -4,16 +4,16 @@
         <h1 style="color:red">{{message}}</h1>
 
         <label>E-Mail</label>
-        <input type="text" name="mail" placeholder="Uw e-mailadres" required>
+        <input type="text" name="mail" [(ngModel)]="mail" placeholder="Uw e-mailadres" required>
 
         <label>Gebruikersnaam</label>
-        <input type="text" name="username" placeholder="Uw gebruikersnaam" required>
+        <input type="text" name="username" [(ngModel)]="username" placeholder="Uw gebruikersnaam" required>
 
         <label>Wachtwoord</label>
-        <input type="password" name="password" placeholder="Uw wachtwoord" required>
+        <input type="password" name="password" [(ngModel)]="password" placeholder="Uw wachtwoord" required>
 
         <label>Herhaal Wachtwoord</label>
-        <input type="password" name="password" placeholder="Herhaal uw wachtwoord" required>
+        <input type="password2" name="password2" [(ngModel)]="password2" placeholder="Herhaal uw wachtwoord" required>
         <div class="buttons">
             <label class="button" (click)="register()">Registreer</label>
             <label class="link" (click)="login()">Ik heb al een account</label>
