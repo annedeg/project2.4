@@ -31,8 +31,6 @@ export class NotificationComponent implements OnInit {
           let dingen: String = data.toString();
   
           this.allNotifications.push(data)
-          
-        console.log(this.allNotifications)
         },
 
         (err) => console.log(err)
@@ -76,7 +74,6 @@ export class NotificationComponent implements OnInit {
   }
 
   confirmRoommate() {
-    console.log(this.roommateID)
     let formData = new FormData()
     formData.append("roommate", this.roommateID.toString())
     this.service.doPostApiCall("/roommates/" + localStorage.getItem('user_id'), formData,
