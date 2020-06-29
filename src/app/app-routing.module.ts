@@ -36,9 +36,10 @@ const routes: Routes = [
   { path: 'roommates/add', component: RoommateComponent, canActivate: [ValidationGuardService]},
   { path: 'contacts', component: ContactOverviewComponent, canActivate: [ValidationGuardService]},
   { path: 'contacts/add', component: AddContactModule, canActivate: [ValidationGuardService]},
-  
 ]
  
+
+
 @NgModule({
   declarations: [],
   imports: [
