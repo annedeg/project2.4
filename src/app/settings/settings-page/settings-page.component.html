@@ -1,19 +1,10 @@
-<div>
+<div id="settings">
     <h1>Instellingen</h1>
     <div>
-      <p>{{username}}</p>
+      <p>Username  :   {{username}}</p>
+      <p>Email     :   {{email}}</p>
     </div>
     <button (click)=changePassword()>Wijzig Wachtwoord</button>
     <br>
-    <p>Wilt u een mail notificatie ontvangen bij Corona besmetting?</p>
-    <form><input type = radio name="mailSetting" checked = checked>Ja<input type = radio name="mailSetting">Nee</form>
-    <br>
-    <button (click)="deleteConfirmToggle()">Verwijder alle Gegevens</button>
-    <div *ngIf="deleteConfirmation">
-      <p>Dit verwijdert alle gegevens. Weet je dit zeker? Vul alsjeblieft je wachtwoord in om dit te bevestigen.</p>
-      <input type = password #deletionPassword>
-      <button (click)="deletionPasswordCheck(deletionPassword.value)">Bevestigen</button>
-    </div>
-    <br><br>
-    <button>Terug</button>
+  
 </div>

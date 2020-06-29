@@ -10,6 +10,7 @@ import {ValidationService} from "../../validation.service";
 
 export class SettingsPageComponent implements OnInit {
   username;
+  email;
   deleteConfirmation : boolean = false;
 
   constructor(private router: Router, private val: ValidationService) {
@@ -20,6 +21,7 @@ export class SettingsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
+    this.email = localStorage.getItem('email');
   }
 
 

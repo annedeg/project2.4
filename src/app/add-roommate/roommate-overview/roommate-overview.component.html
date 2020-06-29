@@ -1,4 +1,6 @@
 <h1>Roommates:</h1>
 <div *ngFor="let roommate of roommates; let i = index">
-    <h3>Roommate user_id = {{roommate[2]}}</h3>
-</div> 
+    <h3>Roommate = {{roommate}}</h3>
+</div>
+
+<button (click)="add_roommate()" class="mat-focus-indicator mat-flat-button mat-button-base"><span class="mat-button-wrapper">Add roommate</span></button>

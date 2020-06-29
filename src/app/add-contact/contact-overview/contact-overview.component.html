@@ -1,14 +1,16 @@
-<table>
-<thead>
-    <td *ngFor="let key of contactMomentsKeys;">
-        <b><p>{{key}}</p></b>
-    </td>
-</thead>
-<tbody>
-<tr *ngFor="let contact of contactMoments;">
-    <td *ngFor="let item of contact;">
-        <p>{{item}}</p>
-    </td>
-</tr>    
-</tbody>
-</table>
+<div>
+    <table>
+        <thead>
+            <td *ngFor="let key of contactMomentsKeys;">
+                <b><p>{{key}}</p></b>
+            </td>
+        </thead>
+        <tbody>
+        <tr *ngFor="let contact of contactMoments;">
+            <td *ngFor="let item of contact;">
+                <p>{{item}}</p>
+            </td>
+        </tr>    
+        </tbody>
+    </table>
+</div>
