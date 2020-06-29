@@ -13,13 +13,12 @@ import {SettingsModule} from "./settings/settings.module";
 import {MatBadgeModule} from "@angular/material/badge";
 import {HomePageModule} from "./home-page/home-page.module";
 import { AddRoommateModule } from './add-roommate/add-roommate.module';
-import { AddContactModule } from './add-contact/add-contact.module';
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import { NotificationsModule } from './notifications/notifications.module';
+
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     CommonModule,
@@ -31,15 +30,14 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     IHaveCoronaModule,
     HttpClientModule,
-      SettingsModule,
-      HomePageModule,
-      AddRoommateModule,
-      AddContactModule,
-      ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-  ],
+    SettingsModule,
+    HomePageModule,
+    AddRoommateModule,
+    NotificationsModule
+  ], 
   exports: [RouterModule,
     MatBadgeModule],
-  providers: [  {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,6 +18,7 @@ import { RoommateComponent } from './add-roommate/roommate/roommate.component';
 import { RoommateOverviewComponent } from './add-roommate/roommate-overview/roommate-overview.component';
 import { ContactOverviewComponent } from './add-contact/contact-overview/contact-overview.component';
 import { AddContactModule } from './add-contact/add-contact.module';
+import { NotificationComponent } from './notifications/notification/notification.component';
 const routes: Routes = [
   {
     path: '',
@@ -32,13 +33,14 @@ const routes: Routes = [
   { path: 'register', component: RegisterMenuComponent},
   { path: 'settings', component: SettingsPageComponent, canActivate: [ValidationGuardService]},
   { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate: [ValidationGuardService]},
+  { path: 'notifications', component: NotificationComponent, canActivate: [ValidationGuardService]},
+  { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate: [ValidationGuardService]},
   { path: 'roommates', component: RoommateOverviewComponent, canActivate: [ValidationGuardService]},
   { path: 'roommates/add', component: RoommateComponent, canActivate: [ValidationGuardService]},
   { path: 'contacts', component: ContactOverviewComponent, canActivate: [ValidationGuardService]},
   { path: 'contacts/add', component: AddContactModule, canActivate: [ValidationGuardService]},
-]
- 
 
+]
 
 @NgModule({
   declarations: [],
