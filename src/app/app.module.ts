@@ -14,7 +14,7 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {HomePageModule} from "./home-page/home-page.module";
 import { AddRoommateModule } from './add-roommate/add-roommate.module';
 import { AddContactModule } from './add-contact/add-contact.module';
-
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +36,7 @@ import { AddContactModule } from './add-contact/add-contact.module';
   ],
   exports: [RouterModule,
     MatBadgeModule],
-  providers: [],
+  providers: [  {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
