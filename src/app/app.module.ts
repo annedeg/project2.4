@@ -12,12 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 import {SettingsModule} from "./settings/settings.module";
 import {MatBadgeModule} from "@angular/material/badge";
 import {HomePageModule} from "./home-page/home-page.module";
-import { NickPageComponent } from './nick-page/nick-page.component';
+import { AddRoommateModule } from './add-roommate/add-roommate.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NickPageComponent,
+
   ],
   imports: [
     CommonModule,
@@ -30,8 +31,10 @@ import { NickPageComponent } from './nick-page/nick-page.component';
     IHaveCoronaModule,
     HttpClientModule,
     SettingsModule,
-    HomePageModule
-  ],
+    HomePageModule,
+    AddRoommateModule,
+    NotificationsModule
+  ], 
   exports: [RouterModule,
     MatBadgeModule],
   providers: [],
