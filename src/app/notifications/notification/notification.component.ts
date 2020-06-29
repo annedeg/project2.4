@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {ValidationService} from '../validation.service';
+import { ValidationService } from 'src/app/validation.service';
+
 
 @Component({
-  selector: 'app-nick-page',
-  templateUrl: './nick-page.component.html',
-  styleUrls: ['./nick-page.component.scss']
+  selector: 'app-notification-page',
+  templateUrl: './notification.component.html',
+  styleUrls: ['./notification.component.scss']
 })
-export class NickPageComponent implements OnInit {
+export class NotificationComponent implements OnInit {
 
   allNotifications = []
   notificationMessage = ""
@@ -19,6 +20,7 @@ export class NickPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.allNotifications = []
     let formData = new FormData();
 
     formData.append("password", "c")
@@ -84,8 +86,8 @@ export class NickPageComponent implements OnInit {
   readNotification(notification_id) {
     let formData = new FormData()
     formData.append("notification", notification_id.toString())
-    this.service.doPutApiCall("/notification/read", formData, localStorage.getItem('token'))
-      .then(() => console.log("notification gelezen"), (err) => console.log(err))
+    this.service.doPutApiCall("/notifications/read", formData, localStorage.getItem('token'))
+      .then(() => this.ngOnInit())
   }
 
 }

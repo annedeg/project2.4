@@ -14,11 +14,11 @@ import { ChangePasswordComponent } from './settings/change-password/change-passw
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginMenuModule} from "./login-menu/login-menu.module";
 import {RegisterMenuComponent} from "./login-menu/register-menu/register-menu.component";
-import { NickPageComponent } from './nick-page/nick-page.component';
 import { RoommateComponent } from './add-roommate/roommate/roommate.component';
 import { RoommateOverviewComponent } from './add-roommate/roommate-overview/roommate-overview.component';
 import { ContactOverviewComponent } from './add-contact/contact-overview/contact-overview.component';
 import { AddContactModule } from './add-contact/add-contact.module';
+import { NotificationComponent } from './notifications/notification/notification.component';
 const routes: Routes = [
   {
     path: '',
@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterMenuComponent},
   { path: 'settings', component: SettingsPageComponent, canActivate: [ValidationGuardService]},
   { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate: [ValidationGuardService]},
-  { path: 'nick', component: NickPageComponent, canActivate: [ValidationGuardService]},
+  { path: 'notifications', component: NotificationComponent, canActivate: [ValidationGuardService]},
   { path: 'settings/wijzig-wachtwoord', component: ChangePasswordComponent, canActivate: [ValidationGuardService]},
   { path: 'roommates', component: RoommateOverviewComponent, canActivate: [ValidationGuardService]},
   { path: 'roommates/add', component: RoommateComponent, canActivate: [ValidationGuardService]},
