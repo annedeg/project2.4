@@ -27,7 +27,7 @@
     "@ionic-native/firebase-x": "^5.27.0",
     "@ionic-native/splash-screen": "^5.27.0",
     "jwt-decode": "^2.2.0",
-    "moment": "^2.26.0",
+    "moment": "^2.29.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
